@@ -653,8 +653,9 @@
             const requiredFields = [
                 'home-price', 'down-payment-percentage', 'loan-includes-renovation', 
                 'loan-interest', 'holding-period', 'renovation-cost', 
-                'purchase-closing-cost', 'property-taxes', 'insurance', 
-                'utilities', 'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
+                'purchase-closing-cost', 'property-taxes', 'insurance',
+                'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
+                'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control'
             ];
 
             for (let fieldId of requiredFields) {
@@ -683,7 +684,6 @@
             const showPropertyTaxes = getNumericValue('property-taxes');
             const insurance = getNumericValue('insurance') / 12;
             const showInsurance = getNumericValue('insurance');
-            const utilities = getNumericValue('utilities');
             const vacancyRate = getNumericValue('vacancy-rate') / 100;
             const capex = getNumericValue('capex') / 100;
             const monthlyMaintenanceReserves = getNumericValue('monthly-maintenance-reserves') / 100;
@@ -723,7 +723,10 @@
 
             const monthlyInterest_v2 = (total_loan_amount * (loanInterestRate / 100)) / 12;
 
-            const totalMonthlyCost = monthlyInterest_v2 + propertyTaxes + insurance + utilities;
+            const totalMonthlyUtilities = waterSewer + garbage + gas + water + electricity + pestControl;
+            const totalAnnualUtilities = totalMonthlyUtilities * 12;
+
+            const totalMonthlyCost = monthlyInterest_v2 + propertyTaxes + insurance + totalMonthlyUtilities;
 
             const totalHoldingCost = totalMonthlyCost * holdingPeriod;
 
@@ -743,9 +746,6 @@
             const total_loan_amount_v2 =(homePrice+renovationCost)*(1 - downPaymentPercentage);
 
             const sumup = (homePrice + renovationCost) / downPaymentPercentage;
-
-            const totalMonthlyUtilities = waterSewer + garbage + gas + water + electricity + pestControl;
-            const totalAnnualUtilities = totalMonthlyUtilities * 12;
 
             // const baseSellingCost = (afterRepairValue * sellingCostPercent) / 100;
        
@@ -771,7 +771,7 @@
             const scenario2ARV = 0.9;
             const scenario2RenovationCost = renovationCost * 1.1;
             const scenario2HoldingPeriod = holdingPeriod + 2;
-            const scenario2TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
+            const scenario2TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + totalMonthlyUtilities;
             const scenario2TotalHoldingCost = scenario2TotalMonthlyCost * scenario2HoldingPeriod;
             // const scenario2SellingCost = (scenario2ARV * sellingCostPercent) / 100;
             const scenario2SellingCost = (scenario2ARV) / 100;
@@ -794,7 +794,7 @@
             const scenario3ARV = 0.8;
             const scenario3RenovationCost = renovationCost * 1.2;
             const scenario3HoldingPeriod = holdingPeriod + 4;
-            const scenario3TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
+            const scenario3TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + totalMonthlyUtilities;
             const scenario3TotalHoldingCost = scenario3TotalMonthlyCost * scenario3HoldingPeriod;
             // const scenario3SellingCost = (scenario3ARV * sellingCostPercent) / 100;
             const scenario3SellingCost = (scenario3ARV) / 100;
@@ -845,7 +845,8 @@
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
-                        <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${utilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
+                        <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
+                        <div style="margin-left: 100px;">* Servicios Públicos Anuales ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span>
                     <p>Costo Total de Mantenimiento: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
@@ -862,6 +863,11 @@
                         <div style="margin-left: 100px;">* Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo de Renovación: $${showRenovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span>
+
+                    <h2><strong>Resumen de la lista de alquileres</strong></h2>
+                    <p>Unidades totales: ${unitSelect}</p>
+                    <p>Total mensual: $${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Anual: $${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 `;
 
 
