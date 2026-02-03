@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jose Bernard Investor Fix & Flip Calculator</title>
+    <title>Jose Bernard Multi Family Calculator</title>
     <style>
         @import url('https://www.fontspace.com/a-big-deal-font-f51277');
         @import url('https://www.fontspace.com/agoestoesan-font-f14421');
@@ -25,7 +25,7 @@
             <div class="flex justify-center mt-3">
                 <img src="tribu_logo.jpg" alt="Tribu Logo" class="w-64 h-auto">
             </div>
-            <h1 id="calculator-title" class="text-2xl font-bold text-center mb-4">Jose Bernard Investor Fix & Flip Calculator</h1>
+            <h1 id="calculator-title" class="text-2xl font-bold text-center mb-4">Jose Bernard Multi Family Calculator</h1>
             
             <div class="text-center mb-6">
                 <button id="language-toggle" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition duration-200">Español</button>
@@ -35,7 +35,8 @@
             <div class="lg:flex lg:space-x-6">
                 <!-- Calculator Form -->
                 <div class="lg:w-1/2 bg-gray-50 p-6 rounded-lg shadow-md mb-6 lg:mb-0 flex-none min-h-[600px] sm:min-h-[700px]"">
-                    <form id="calculator-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <form id="calculator-form" class="">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-home-price" class="block text-gray-700 mb-1 text-sm" for="home-price">
                                 Home Price
@@ -66,6 +67,8 @@
                                 <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div class="pt-1"> 
                             <label id="label-loan-includes-renovation" class="block text-gray-700 mb-1 text-xs" for="loan-includes-renovation">Does the Loan Include Renovation Costs?</label>
                             <select id="loan-includes-renovation" class="w-full p-2 border border-gray-300 rounded" required>
@@ -87,8 +90,10 @@
                                 <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label id="label-holding-period" class="block text-gray-700 mb-1 text-sm" for="holding-period">Holding Period (Months)
+                            <label id="label-holding-period" class="block text-gray-700 mb-1 text-sm" for="holding-period">Pre-rent holding period (Months)
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-holding-period" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -109,7 +114,9 @@
                                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
                                 <input type="text" id="renovation-cost" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 50000" required>
                             </div>
-                        </div>                        
+                        </div>  
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div class="pt-1">
                             <label class="block text-gray-700 mb-1 text-[11.5px]" id="label-purchase-closing-cost" for="purchase-closing-cost">Purchase Closing Cost Percentage
                                 <span class="relative inline-block cursor-help group">
@@ -135,7 +142,9 @@
                                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
                                 <input type="text" id="property-taxes" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
                             </div>
-                        </div>                        
+                        </div> 
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
                         <div>
                             <label id="label-insurance" class="block text-gray-700 mb-1 text-sm" for="insurance">Yearly Insurance
                                 <span class="relative inline-block cursor-help group">
@@ -149,46 +158,174 @@
                                 <input type="text" id="insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
                             </div>
                         </div>
-                        <div class="pt-1">
-                            <label id="label-utilities" class="block text-gray-700 mb-1 text-xs" for="utilities">Estimated Monthly Utilities
+                        <div class="">
+                            <label id="label-water-sewer" class="block text-gray-700 mb-1 text-sm" for="water-sewer">Water & Sewer
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-utilities" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        An estimate of your monthly gas, electricity, water, and sewer costs.
+                                    <span id="tooltip-water-sewer" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Estimated water and sewer costs for the property.
                                     </span>
                             </label>
                             <div class="relative">
                                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
-                                <input type="text" id="utilities" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
+                                <input type="text" id="water-sewer" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- ================= UTILITIES ================= -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
+                            <div>
+                                <label id="label-garbage" class="block text-gray-700 mb-1 text-sm" for="garbage">Garbage
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-garbage" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated garbage collection costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="garbage" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label id="label-gas" class="block text-gray-700 mb-1 text-sm" for="gas">Gas
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-gas" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated gas costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="gas" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
+                            <div class="">
+                                <label id="label-water" class="block text-gray-700 mb-1 text-sm" for="water">Water
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-water" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated water costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="water" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label id="label-electricity" class="block text-gray-700 mb-1 text-sm" for="electricity">Electricity
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-electricity" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated electricity costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="electricity" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
+                            <div class="">
+                                <label id="label-pest-control" class="block text-gray-700 mb-1 text-sm" for="pest-control">Pest Control
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-pest-control" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated pest control costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="pest-control" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">Rent Roll Number of Units</label>
+                                <select id="unitSelect" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200">
+                                <option value="">Select units</option>
+                                <option value="1">1 Unit</option>
+                                <option value="2">2 Units</option>
+                                <option value="3">3 Units</option>
+                                <option value="4">4 Units</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    <!-- ================= RENT ROLL ================= -->
+                    <div class="">
+                        <!-- Unit Rows -->
+                        <div id="rentFields" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label id="label-vacancy-rate" class="block text-gray-700 mb-1 text-sm" for="vacancy-rate">Vacancy Rate
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-vacancy-rate" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Percentage of the property's total income that is set aside to account for potential vacancies and periods when units are not generating income during the year. This reserve covers expenses during the time the unit is vacant.
+                                    </span>
+                                </span>
+                            </label>
+                            <div class="flex items-center border border-gray-300 rounded p-2">
+                                <input type="text" id="vacancy-rate" class="w-full outline-none" placeholder="E.g., 5" step="0.01" required>
+                                <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
                         <div>
-                            <label id="label-after-repair-value" class="block text-gray-700 mb-1 text-sm" for="after-repair-value">After Repair Value (ARV)
+                            <label id="label-capex" class="block text-gray-700 mb-1 text-sm" for="capex">CapEX
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-arv" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        The estimated sale price of the house after renovations.
+                                    <span id="tooltip-capex" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Percentage of the property's total income that is set aside to account for large, infrequent expenses intended to improve or extend the useful life of a property. Examples: new roof, new heating system, major renovations.
                                     </span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
-                                <input type="text" id="after-repair-value" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 250000" required>
-                            </div>
-                        </div>
-
-                        <div >
-                            <label class="block text-gray-700 mb-1 text-sm" id="label-selling-cost" for="selling-cost">Selling Cost
-                                <span class="relative inline-block cursor-help group">
-                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-selling-cost" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        Fees for closing the sale, calculated as a percentage of the sale price.
-                                    </span>
+                                </span>
                             </label>
                             <div class="flex items-center border border-gray-300 rounded p-2">
-                                <input type="text" id="selling-cost" class="w-full outline-none" placeholder="E.g., 6" step="0.01" required>
-                                <span class="ml-2 text-gray-700">%</span>
+                                <input type="text" id="capex" class="w-full outline-none" placeholder="E.g., 5" step="0.01" required>
+                                <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label id="label-monthly-maintenance-reserves" class="block text-gray-700 mb-1 text-sm" for="monthly-maintenance-reserves">Monthly Maintenance Reserves
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-monthly-maintenance-reserves" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        The Monthly Maintenance Reserves of your loan.
+                                    </span>
+                                </span>
+                            </label>
+                            <div class="flex items-center border border-gray-300 rounded p-2">
+                                <input type="text" id="monthly-maintenance-reserves" class="w-full outline-none" placeholder="E.g., 5" step="0.01" required>
+                                <span class="ml-2 text-gray-500">% </span>
+                            </div>
+                        </div>
+                        <div>
+                            <label id="label-management-fee" class="block text-gray-700 mb-1 text-sm" for="management-fee">Management Fee
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-management-fee" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Management Fee.
+                                    </span>
+                                </span>
+                            </label>
+                            <div class="flex items-center border border-gray-300 rounded p-2">
+                                <input type="text" id="management-fee" class="w-full outline-none" placeholder="E.g., 5" step="0.01" required>
+                                <span class="ml-2 text-gray-500">% </span>
+                            </div>
+                        </div>
+                    </div>
+                        
                     </form>
                     
                     <button id="calculate-button" type="button" onclick="calculate()" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded font-medium mt-6 transition duration-200">Calculate</button>
@@ -261,6 +398,25 @@
                     "calculate-button": "Calculate",
                     "label-savePdfBtn": "Save to PDF",
                     "disclaimer": "Disclaimer: This calculator provides estimates only. Perform additional analysis and due diligence before making any investment decisions.",
+                    "label-savePdfBtn": "Save to PDF",
+                    "label-water-sewer": "Water & Sewer",
+                    "label-garbage": "Garbage",
+                    "label-gas": "Gas",
+                    "label-water": "Water",
+                    "label-electricity": "Electricity",
+                    "label-pest-control": "Pest Control",
+                    "label-vacancy-rate": "Vacancy Rate",
+                    "label-capex": "CapEX",
+                    "label-monthly-maintenance-reserves": "Monthly Maintenance Reserves",
+                    "label-management-fee": "Management Fee",
+                    "label-rent-roll-units": "Rent Roll Number of Units",
+                    "unitSelect": "Select units",
+                    "label-unit-1": "Unit 1",
+                    "label-unit-2": "Unit 2",
+                    "label-unit-3": "Unit 3",
+                    "label-unit-4": "Unit 4",
+
+
                     // Tooltip translations
                     "tooltip-home-price": "How much you're offering to buy the house.",
                     "tooltip-down-payment": "The percentage of the downpayment on your loan.",
@@ -273,6 +429,17 @@
                     "tooltip-utilities": "An estimate of your monthly gas, electricity, water, and sewer costs.",
                     "tooltip-arv": "The estimated sale price of the house after renovations.",
                     "tooltip-selling-cost": "Fees for closing the sale, calculated as a percentage of the sale price.",
+                    "tooltip-water-sewer": "Estimated water and sewer costs for the property.",
+                    "tooltip-garbage": "Estimated garbage collection costs for the property.",
+                    "tooltip-gas": "Estimated gas costs for the property.",
+                    "tooltip-water": "Estimated water costs for the property.",
+                    "tooltip-electricity": "Estimated electricity costs for the property.",
+                    "tooltip-pest-control": "Estimated pest control costs for the property.",
+                    "tooltip-vacancy-rate": "Percentage of the property's total income that is set aside to account for potential vacancies and periods when units are not generating income during the year. This reserve covers expenses during the time the unit is vacant.",
+                    "tooltip-capex": "Percentage of the property's total income that is set aside to account for large, infrequent expenses intended to improve or extend the useful life of a property. Examples: new roof, new heating system, major renovations.",
+                    "tooltip-monthly-maintenance-reserves": "Percentage of a property’s total income set aside to cover ongoing maintenance and repairs, such as landscaping, snow removal, and routine tenant requests like a clogged toilet.",
+                    "tooltip-management-fee": "Percentage of the total rent paid to a management company in exchange for managing and operating the property.",
+
                     
                 },
                 es: {
@@ -291,6 +458,23 @@
                     "calculate-button": "Calcular",
                     "label-savePdfBtn": "Guardar como PDF",
                     "disclaimer": "Descargo de responsabilidad: Esta calculadora solo proporciona estimaciones. Realice análisis adicionales y la debida diligencia antes de tomar cualquier decisión de inversión.",
+                    "label-water-sewer": "Agua y Alcantarillado",
+                    "label-garbage": "Basura",
+                    "label-gas": "Gas",
+                    "label-water": "Agua",
+                    "label-electricity": "Electricidad",
+                    "label-pest-control": "Control de Plagas",
+                    "label-vacancy-rate": "Tasa de Vacantes",
+                    "label-capex": "CapEx",
+                    "label-monthly-maintenance-reserves": "Reservas Mensuales de Mantenimiento",
+                    "label-management-fee": "Honorarios de Gestión",
+                    "label-rent-roll-units": "Número de Unidades en el Alquiler",
+                    "unitSelect": "Seleccionar unidades",
+                    "label-unit-1": "Unidad 1",
+                    "label-unit-2": "Unidad 2",
+                    "label-unit-3": "Unidad 3",
+                    "label-unit-4": "Unidad 4",
+
                     // Tooltip translations
                     "tooltip-home-price": "Cuánto estás ofreciendo para comprar la casa.",
                     "tooltip-down-payment": "El porcentaje del pago inicial de tu préstamo.",
@@ -303,7 +487,17 @@
                     "tooltip-utilities": "Una estimación de tus costos mensuales de gas, electricidad, agua y alcantarillado.",
                     "tooltip-arv": "El precio de venta estimado de la casa después de las renovaciones.",
                     "tooltip-selling-cost": "Honorarios por cerrar la venta, calculados como porcentaje del precio de venta.",
-                    
+                    "tooltip-water-sewer": "Costos estimados de agua y alcantarillado para la propiedad.",
+                    "tooltip-garbage": "Costos estimados de recolección de basura para la propiedad.",
+                    "tooltip-gas": "Costos estimados de gas para la propiedad.",
+                    "tooltip-water": "Costos estimados de agua para la propiedad.",
+                    "tooltip-electricity": "Costos estimados de electricidad para la propiedad.",
+                    "tooltip-pest-control": "Costos estimados de control de plagas para la propiedad.",
+                    "tooltip-vacancy-rate": "Porcentaje del ingreso total de la propiedad que se aparta para el potencial de unidades que estarán vacías y no generando ingresos durante el año, esta reserva cubre los gastos durante el tiempo que la unidad está vacante.",
+                    "tooltip-capex": "Porcentaje del ingreso total de la propiedad que se aparta para gastos grandes y poco frecuentes destinados a mejorar o extender la vida útil de una propiedad. Ejemplos: techo nuevo, sistema de calefacción nuevo, remodelaciones mayores.",
+                    "tooltip-monthly-maintenance-reserves": "Porcentaje del ingreso total de la propiedad que se aparta para cubrir mantenimiento y reparaciones recurrentes, como jardinería, remoción de nieve y solicitudes rutinarias de los inquilinos, por ejemplo un inodoro tapado",
+                    "tooltip-management-fee": "Porcentaje de la renta total que se paga a la compañía administradora a cambio de la gestión y operación de la propiedad.",
+
                 }
             };
 
@@ -354,7 +548,27 @@
                     options[1].text = "No";
                 }
             }
-            
+
+            // Update select options for rent roll units
+            if (document.getElementById("unitSelect")) {
+                const unitSelectElement = document.getElementById("unitSelect");
+                const unitOptions = unitSelectElement.options;
+
+                if (language === 'en') {
+                    unitOptions[0].text = "Select units";
+                    unitOptions[1].text = "1 Unit";
+                    unitOptions[2].text = "2 Units";
+                    unitOptions[3].text = "3 Units";
+                    unitOptions[4].text = "4 Units";
+                } else {
+                    unitOptions[0].text = "Seleccionar unidades";
+                    unitOptions[1].text = "1 Unidad";
+                    unitOptions[2].text = "2 Unidades";
+                    unitOptions[3].text = "3 Unidades";
+                    unitOptions[4].text = "4 Unidades";
+                }
+            }
+
             // Update button text
             document.getElementById("calculate-button").innerText = translations[language]["calculate-button"];
             
@@ -371,7 +585,22 @@
                     "insurance": "E.g., 1200",
                     "utilities": "E.g., 200",
                     "after-repair-value": "E.g., 250000",
-                    "selling-cost": "E.g., 6"
+                    "selling-cost": "E.g., 6",
+                    "water-sewer": "E.g., 1200",
+                    "garbage": "E.g., 1200",
+                    "gas": "E.g., 1200",
+                    "water": "E.g., 1200",
+                    "electricity": "E.g., 1200",
+                    "pest-control": "E.g., 1200",
+                    "unit-1": "E.g., 3000",
+                    "unit-2": "E.g., 3000",
+                    "unit-3": "E.g., 3000",
+                    "unit-4": "E.g., 3000",
+                    "vacancy-rate": "E.g., 5",
+                    "capex": "E.g., 5",
+                    "maintenance-reserves": "E.g., 5",
+                    "management-fee": "E.g., 5",
+                    
                 },
                 es: {
                     "home-price": "Ej., 150000",
@@ -384,7 +613,22 @@
                     "insurance": "Ej., 1200",
                     "utilities": "Ej., 200",
                     "after-repair-value": "Ej., 250000",
-                    "selling-cost": "Ej., 6"
+                    "selling-cost": "Ej., 6",
+                    "water-sewer": "Ej., 1200",
+                    "garbage": "Ej., 1200",
+                    "gas": "Ej., 1200",
+                    "water": "Ej., 1200",
+                    "electricity": "Ej., 1200",
+                    "pest-control": "Ej., 1200",
+                    "unit-1": "Ej., 3000",
+                    "unit-2": "Ej., 3000",
+                    "unit-3": "Ej., 3000",
+                    "unit-4": "Ej., 3000",
+                    "vacancy-rate": "Ej., 5",
+                    "capex": "Ej., 5",
+                    "maintenance-reserves": "Ej., 5",
+                    "management-fee": "Ej., 5",
+                    
                 }
             };
             
@@ -410,7 +654,7 @@
                 'home-price', 'down-payment-percentage', 'loan-includes-renovation', 
                 'loan-interest', 'holding-period', 'renovation-cost', 
                 'purchase-closing-cost', 'property-taxes', 'insurance', 
-                'utilities', 'after-repair-value', 'selling-cost'
+                'utilities', 'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
             ];
 
             for (let fieldId of requiredFields) {
@@ -440,8 +684,23 @@
             const insurance = getNumericValue('insurance') / 12;
             const showInsurance = getNumericValue('insurance');
             const utilities = getNumericValue('utilities');
-            const afterRepairValue = getNumericValue('after-repair-value');
-            const sellingCostPercent = getNumericValue('selling-cost');
+            const vacancyRate = getNumericValue('vacancy-rate') / 100;
+            const capex = getNumericValue('capex') / 100;
+            const monthlyMaintenanceReserves = getNumericValue('monthly-maintenance-reserves') / 100;
+            const managementFee = getNumericValue('management-fee') / 100;
+            const unitSelect = getNumericValue('unitSelect');
+            // utitlities
+            const waterSewer = getNumericValue('water-sewer');
+            const garbage = getNumericValue('garbage');
+            const gas = getNumericValue('gas');
+            const water = getNumericValue('water');
+            const electricity = getNumericValue('electricity');
+            const pestControl = getNumericValue('pest-control');
+
+
+
+            // const afterRepairValue = getNumericValue('after-repair-value');
+            // const sellingCostPercent = getNumericValue('selling-cost');
             
             var total_cash_needed_v2 =  0;
             var total_cash_needed_v3 =  0;
@@ -470,9 +729,10 @@
 
             const purchaseClosingCost = loanIncludesRenovation ? (loanAmount * purchaseClosingCostPercentage) : (homePrice * purchaseClosingCostPercentage);
 
-            const total_selling_cost = afterRepairValue * (sellingCostPercent / 100);
+            // const total_selling_cost = afterRepairValue * (sellingCostPercent / 100);
+            const total_selling_cost = (0);
             
-            total_cash_needed_v2 += downPayment + totalHoldingCost + purchaseClosingCost + total_selling_cost;
+            total_cash_needed_v2 += downPayment + totalHoldingCost + purchaseClosingCost // + total_selling_cost;
 
             total_cash_needed_v3 += downPayment + totalHoldingCost + purchaseClosingCost;
 
@@ -484,9 +744,17 @@
 
             const sumup = (homePrice + renovationCost) / downPaymentPercentage;
 
-            const baseSellingCost = (afterRepairValue * sellingCostPercent) / 100;
+            const totalMonthlyUtilities = waterSewer + garbage + gas + water + electricity + pestControl;
+            const totalAnnualUtilities = totalMonthlyUtilities * 12;
+
+            // const baseSellingCost = (afterRepairValue * sellingCostPercent) / 100;
        
-            const baseProfit = afterRepairValue - (homePrice + renovationCost) - totalHoldingCost - purchaseClosingCost - total_selling_cost;
+            // const baseProfit = afterRepairValue - (homePrice + renovationCost) - totalHoldingCost - purchaseClosingCost - total_selling_cost;
+           
+            // const baseROI = (baseProfit /  total_cash_needed_v3) * 100;
+            
+            // const baseProfit = (homePrice + renovationCost) - totalHoldingCost - purchaseClosingCost - total_selling_cost;
+            const baseProfit = (homePrice + renovationCost) - totalHoldingCost - purchaseClosingCost;
            
             const baseROI = (baseProfit /  total_cash_needed_v3) * 100;
 
@@ -494,22 +762,26 @@
             document.getElementById('result').style.display = 'block';
             
             // Scenario 1: Base Scenario
-            const scenario1SellingCost = baseSellingCost;
+            // const scenario1SellingCost = baseSellingCost;
             const scenario1Profit = baseProfit;
             const scenario1ROI = baseROI;
 
             // Scenario 2: +10% Renovation Cost, -10% ARV, +2 Months
-            const scenario2ARV = afterRepairValue * 0.9;
+            // const scenario2ARV = afterRepairValue * 0.9;
+            const scenario2ARV = 0.9;
             const scenario2RenovationCost = renovationCost * 1.1;
             const scenario2HoldingPeriod = holdingPeriod + 2;
             const scenario2TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
             const scenario2TotalHoldingCost = scenario2TotalMonthlyCost * scenario2HoldingPeriod;
-            const scenario2SellingCost = (scenario2ARV * sellingCostPercent) / 100;
+            // const scenario2SellingCost = (scenario2ARV * sellingCostPercent) / 100;
+            const scenario2SellingCost = (scenario2ARV) / 100;
 
             scenario2RenovationCost_v2 = renovationCost * 0.1;
-            scenario2ARV_v2  = afterRepairValue * 0.1;
+            // scenario2ARV_v2  = afterRepairValue * 0.1;
+            scenario2ARV_v2  = 0.1;
             scenarioProjectCost_v2 = totalMonthlyCost * 2;
-            scenario_arv_new = scenario2ARV_v2 * (sellingCostPercent /  100);
+            // scenario_arv_new = scenario2ARV_v2 * (sellingCostPercent /  100);
+            scenario_arv_new = scenario2ARV_v2 * ( 100);
 
             const scenario2Profit_before = scenario2RenovationCost_v2 +  scenario2ARV_v2 +  scenarioProjectCost_v2;
             const scenario2Profit_b = scenario1Profit - scenario2Profit_before;
@@ -518,23 +790,43 @@
             
 // ----------------------------------------------------------------------------------------------------------------------
             // Scenario 3: +20% Renovation Cost, -20% ARV, +4 Months
-            const scenario3ARV = afterRepairValue * 0.8;
+            // const scenario3ARV = afterRepairValue * 0.8;
+            const scenario3ARV = 0.8;
             const scenario3RenovationCost = renovationCost * 1.2;
             const scenario3HoldingPeriod = holdingPeriod + 4;
             const scenario3TotalMonthlyCost = monthlyInterest + propertyTaxes + insurance + utilities;
             const scenario3TotalHoldingCost = scenario3TotalMonthlyCost * scenario3HoldingPeriod;
-            const scenario3SellingCost = (scenario3ARV * sellingCostPercent) / 100;
+            // const scenario3SellingCost = (scenario3ARV * sellingCostPercent) / 100;
+            const scenario3SellingCost = (scenario3ARV) / 100;
 
             scenario2RenovationCost_v3 = renovationCost * 0.2;
-            scenario2ARV_v3  = afterRepairValue * 0.2;
+            // scenario2ARV_v3  = afterRepairValue * 0.2;
+            scenario2ARV_v3  = 0.2;
             scenarioProjectCost_v3 = totalMonthlyCost * 4;
-            scenario_arv_new_v3 = scenario2ARV_v3 * (sellingCostPercent /  100);
+            // scenario_arv_new_v3 = scenario2ARV_v3 * (sellingCostPercent /  100);
+            scenario_arv_new_v3 = scenario2ARV_v3 * (100);
 
             const scenario3Profit_before = scenario2RenovationCost_v3 +  scenario2ARV_v3 +  scenarioProjectCost_v3;
             const scenario3Profit_b =  scenario1Profit - scenario3Profit_before;
             const scenario3Profit  =  scenario3Profit_b + scenario_arv_new_v3;
             const scenario3cashneeded = total_cash_needed_v2 + scenario2RenovationCost_v3 + scenarioProjectCost_v3;
             const scenario3ROI = (scenario3Profit /  scenario3cashneeded) * 100;
+// ----------------------------------------------------------------------------------------------------------------------
+            
+            //Rent roll summary
+             const rentInputs = rentFields.querySelectorAll('input');
+             let totalMonthlyRentRoll = 0;
+                rentInputs.forEach(i => {
+                    totalMonthlyRentRoll += parseFloat(i.value) || 0;
+                });
+                
+                const totalAnnualRentRoll = totalMonthlyRentRoll * 12;
+                const vacancyRateAmount = vacancyRate * totalAnnualRentRoll;
+                const capexAmount = capex * totalAnnualRentRoll;
+                const totalVacancyAndCapex = vacancyRateAmount + capexAmount;
+                const maintenanceReservesAmount = monthlyMaintenanceReserves * totalVacancyAndCapex;
+                const managementFeeAmount = managementFee * totalAnnualRentRoll;
+
 
             if (language === 'es') {
                 // Mostrar el Resumen Financiero del Acuerdo
@@ -590,48 +882,6 @@
                             <p>${scenario1ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
                         </div>
                     </div>
-
-                    <h3 class="text-xl font-semibold mt-6 mb-4 text-center">Resultados de Escenarios Potenciales en el Peor Caso</h3>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Escenario 2 -->
-                        <div class="p-4 border border-gray-300 rounded-lg shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Escenario Potencial en el Peor Caso I</h4>
-                            <p class="text-gray-700 text-sm mb-4">
-                                ¿Qué pasa si la renovación aumenta un 10%, tienes que descontar el precio de venta un 10% 
-                                y terminas reteniendo la propiedad por 2 meses adicionales?
-                            </p>
-                            <div class="flex justify-center gap-6">
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-red-100 text-red-700 font-bold rounded-full shadow-md">
-                                    <p>Ganancia</p>
-                                    <p>$${scenario2Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                </div>
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-yellow-100 text-yellow-700 font-bold rounded-full shadow-md">
-                                    <p>ROI</p>
-                                    <p>${scenario2ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Escenario 3 -->
-                        <div class="p-4 border border-gray-300 rounded-lg shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Escenario Potencial en el Peor Caso II</h4>
-                            <p class="text-gray-700 text-sm mb-4">
-                                ¿Qué pasa si la renovación aumenta un 20%, tienes que descontar el precio de venta un 20% 
-                                y terminas reteniendo la propiedad por 4 meses adicionales?
-                            </p>
-                            <div class="flex justify-center gap-6">
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-red-100 text-red-700 font-bold rounded-full shadow-md">
-                                    <p>Ganancia</p>
-                                    <p>$${scenario3Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                </div>
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-yellow-100 text-yellow-700 font-bold rounded-full shadow-md">
-                                    <p>ROI</p>
-                                    <p>${scenario3ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 `;
 
             } 
@@ -649,13 +899,14 @@
                     <p>Total Loan Amount: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
-                    <h2><strong>Holding Cost Summary</strong></h2>
+                    <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
                     <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                             <span style="font-size: 0.85em;">
                                <div style="margin-left: 100px;"> * Monthly Property Tax Payment ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Insurance Payment ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
-                               <div style="margin-left: 100px;"> * Monthly Utilities ($${utilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
+                               <div style="margin-left: 100px;"> * Monthly Utilities ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
+                               <div style="margin-left: 100px;"> * Annual Utilities ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
                                <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             </span>
 
@@ -675,6 +926,11 @@
                             <div style="margin-left: 100px;">* Renovation Cost: $${showRenovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         </span>
                     
+                    <h2><strong>Rent Roll Summary</strong></h2>
+                    <p>Total Units: ${unitSelect}</p>
+                    <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    
                 `;
 
 
@@ -682,7 +938,7 @@
                 document.getElementById('scenarios').style.display = 'block';
 
                 document.getElementById('scenarios').innerHTML = `
-                    <h3 class="text-2xl font-bold mb-4">Profit and Return on Investment Results</h3>
+                    <h3 class="text-2xl font-bold mb-4">Cash Flow and Return on Investment Results</h3>
 
                     <!-- Scenario 1 -->
                     <div class="flex justify-center items-center gap-8 mb-8">
@@ -695,52 +951,43 @@
                             <p>${scenario1ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
                         </div>
                     </div>
-
-                    <h3 class="text-xl font-semibold mt-6 mb-4 text-center">Potential Worst-Case Scenarios Results</h3>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Scenario 2 -->
-                        <div class="p-4 border border-gray-300 rounded-lg shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Potential Worst-Case Scenario I</h4>
-                            <p class="text-gray-700 text-sm mb-4">
-                                What if your renovation goes over by 10%, you have to discount your sales price by 10%, 
-                                and you end up holding the property for 2 additional months?
-                            </p>
-                            <div class="flex justify-center gap-6">
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-red-100 text-red-700 font-bold rounded-full shadow-md">
-                                    <p>Profit</p>
-                                    <p>$${scenario2Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                </div>
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-yellow-100 text-yellow-700 font-bold rounded-full shadow-md">
-                                    <p>ROI</p>
-                                    <p>${scenario2ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Scenario 3 -->
-                        <div class="p-4 border border-gray-300 rounded-lg shadow-md">
-                            <h4 class="font-bold text-lg mb-2">Potential Worst-Case Scenario II</h4>
-                            <p class="text-gray-700 text-sm mb-4">
-                                What if your renovation goes over by 20%, you have to discount your sales price by 20%, 
-                                and you end up holding the property for 4 additional months?
-                            </p>
-                            <div class="flex justify-center gap-6">
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-red-100 text-red-700 font-bold rounded-full shadow-md">
-                                    <p>Profit</p>
-                                    <p>$${scenario3Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                                </div>
-                                <div class="flex flex-col items-center justify-center w-24 h-24 bg-yellow-100 text-yellow-700 font-bold rounded-full shadow-md">
-                                    <p>ROI</p>
-                                    <p>${scenario3ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 `;
 
             }
         }
     </script>
+
+  <script>
+
+    // Select all inputs that should accept only positive numbers
+    // Enforce digits only for all number inputs
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('input', (e) => {
+    e.target.value = e.target.value
+        .replace(/[^0-9.]/g, '')     // Remove everything except digits and dot
+        .replace(/(\..*)\./g, '$1'); // Allow only one decimal point
+    });
+    });
+
+    const unitSelect = document.getElementById('unitSelect');
+    const rentFields = document.getElementById('rentFields');
+
+    unitSelect.addEventListener('change', () => {
+      const units = parseInt(unitSelect.value || 0);
+      rentFields.innerHTML = '';
+
+      for (let i = 1; i <= units; i++) {
+        const field = document.createElement('div');
+        field.innerHTML = `
+          <label id="label-unit-${i}" class="block text-sm font-medium mb-1">Unit ${i}</label>
+            <div class="relative mb-2">
+                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                <input type="text" id="unit-${i}" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
+            </div>
+        `;
+        rentFields.appendChild(field);
+      }
+    });
+  </script>
 </body>
 </html>
