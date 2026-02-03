@@ -741,8 +741,6 @@
 
             const monthlyInterest = (loanAmount * (loanInterestRate / 100)) / 12;
 
-            const holding_period_months = totalMonthlyCost * totalMonthlyCost;
-
             const total_loan_amount_v2 =(homePrice+renovationCost)*(1 - downPaymentPercentage);
 
             const sumup = (homePrice + renovationCost) / downPaymentPercentage;
@@ -868,6 +866,11 @@
                     <p>Unidades totales: ${unitSelect}</p>
                     <p>Total mensual: $${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Anual: $${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total de vacantes y CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de la tarifa de gestión: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
                 `;
 
 
@@ -936,6 +939,12 @@
                     <p>Total Units: ${unitSelect}</p>
                     <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>CapEx Amount: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Vacancy & CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Maintenance Reserves Amount: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Management Fee Amount: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    
                     
                 `;
 
