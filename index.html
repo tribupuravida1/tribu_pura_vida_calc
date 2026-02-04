@@ -93,7 +93,7 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label id="label-holding-period" class="block text-gray-700 mb-1 text-sm" for="holding-period">Pre-rent holding period (Months)
+                            <label id="label-holding-period" class="block text-gray-700 mb-1 text-sm" for="holding-period">Pre-rent Holding Period (Months)
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-holding-period" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -158,22 +158,26 @@
                                 <input type="text" id="insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
                             </div>
                         </div>
-                        <div class="">
-                            <label id="label-water-sewer" class="block text-gray-700 mb-1 text-sm" for="water-sewer">Water & Sewer
-                                <span class="relative inline-block cursor-help group">
-                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-water-sewer" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        Estimated water and sewer costs for the property.
-                                    </span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
-                                <input type="text" id="water-sewer" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
+                            <div>
+                                <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">Rent Roll Number of Units</label>
+                                <select id="unitSelect" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200">
+                                <option value="">Select units</option>
+                                <option value="1">1 Unit</option>
+                                <option value="2">2 Units</option>
+                                <option value="3">3 Units</option>
+                                <option value="4">4 Units</option>
+                                </select>
                             </div>
                         </div>
-                        </div>
+
+                        <!-- ================= RENT ROLL ================= -->
+                            <div class="">
+                                <!-- Unit Rows -->
+                                <div id="rentFields" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2"></div>
+                            </div>
 
                         <!-- ================= UTILITIES ================= -->
+                        <h2 id="label-estimated-monthly-utilities" class="text-base font-medium mb-4"> Estimated Monthly Utilities</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
                             <div>
                                 <label id="label-garbage" class="block text-gray-700 mb-1 text-sm" for="garbage">Garbage
@@ -246,23 +250,21 @@
                                     <input type="text" id="pest-control" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
                                 </div>
                             </div>
-                            <div>
-                                <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">Rent Roll Number of Units</label>
-                                <select id="unitSelect" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200">
-                                <option value="">Select units</option>
-                                <option value="1">1 Unit</option>
-                                <option value="2">2 Units</option>
-                                <option value="3">3 Units</option>
-                                <option value="4">4 Units</option>
-                                </select>
+                            <div class="">
+                                <label id="label-water-sewer" class="block text-gray-700 mb-1 text-sm" for="water-sewer">Water & Sewer
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-water-sewer" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Estimated water and sewer costs for the property.
+                                        </span>
+                                </label>
+                                <div class="relative">
+                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                    <input type="text" id="water-sewer" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
+                                </div>
                             </div>
                         </div>
                         
-                    <!-- ================= RENT ROLL ================= -->
-                    <div class="">
-                        <!-- Unit Rows -->
-                        <div id="rentFields" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2"></div>
-                    </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
@@ -297,7 +299,7 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label id="label-monthly-maintenance-reserves" class="block text-gray-700 mb-1 text-sm" for="monthly-maintenance-reserves">Monthly Maintenance Reserves
+                            <label id="label-monthly-maintenance-reserves" class="block text-gray-700 mb-1 text-xs" for="monthly-maintenance-reserves">Monthly Maintenance Reserves
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-monthly-maintenance-reserves" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -409,6 +411,7 @@
                     "label-capex": "CapEX",
                     "label-monthly-maintenance-reserves": "Monthly Maintenance Reserves",
                     "label-management-fee": "Management Fee",
+                    "label-estimated-monthly-utilities": "Estimated Monthly Utilities",
                     "label-rent-roll-units": "Rent Roll Number of Units",
                     "unitSelect": "Select units",
                     "label-unit-1": "Unit 1",
@@ -469,6 +472,7 @@
                     "label-monthly-maintenance-reserves": "Reservas Mensuales de Mantenimiento",
                     "label-management-fee": "Honorarios de Gestión",
                     "label-rent-roll-units": "Número de Unidades en el Alquiler",
+                    "label-estimated-monthly-utilities": "Servicios Públicos Mensuales Estimados",
                     "unitSelect": "Seleccionar unidades",
                     "label-unit-1": "Unidad 1",
                     "label-unit-2": "Unidad 2",
@@ -851,7 +855,6 @@
 
                     <h2><strong>Resumen de Costos de Cierre</strong></h2>
                     <p>Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Costo Total de Cierre de Venta: $${total_selling_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Efectivo Necesario</strong></h2>
                     <p>Efectivo Total Necesario: $${total_cash_needed_v3.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -924,7 +927,6 @@
 
                      <h2><strong>Closing Cost Summary</strong></h2>
                     <p>Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Total Selling Closing Cost: $${total_selling_cost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Cash Needed Summary</strong></h2>
                     <p>Total Cash Needed: $${total_cash_needed_v3.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -958,7 +960,7 @@
                     <!-- Scenario 1 -->
                     <div class="flex justify-center items-center gap-8 mb-8">
                         <div class="flex flex-col items-center justify-center w-32 h-32 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md">
-                            <p>Profit</p>
+                            <p>Cash Flow</p>
                             <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-32 h-32 bg-green-100 text-green-700 font-bold rounded-full shadow-md">
