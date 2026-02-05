@@ -440,7 +440,7 @@
                     "tooltip-pest-control": "Estimated pest control costs for the property.",
                     "tooltip-vacancy-rate": "Percentage of the property's total income that is set aside to account for potential vacancies and periods when units are not generating income during the year. This reserve covers expenses during the time the unit is vacant.",
                     "tooltip-capex": "Percentage of the property's total income that is set aside to account for large, infrequent expenses intended to improve or extend the useful life of a property. Examples: new roof, new heating system, major renovations.",
-                    "tooltip-monthly-maintenance-reserves": "Percentage of a property’s total income set aside to cover ongoing maintenance and repairs, such as landscaping, snow removal, and routine tenant requests like a clogged toilet.",
+                    "tooltip-monthly-maintenance-reserves": "Percentage of a property's total income set aside to cover ongoing maintenance and repairs, such as landscaping, snow removal, and routine tenant requests like a clogged toilet.",
                     "tooltip-management-fee": "Percentage of the total rent paid to a management company in exchange for managing and operating the property.",
 
                     
@@ -665,8 +665,29 @@
             for (let fieldId of requiredFields) {
                 const field = document.getElementById(fieldId);
                 if (!field.value || (field.type === 'number' && isNaN(field.value))) {
-                    alert('Please fill in all the required fields.');
+                    const errorMessage = language === 'en' 
+                        ? 'Please fill in all the required fields.' 
+                        : 'Por favor, complete todos los campos requeridos.';
+                    alert(errorMessage);
                     return;
+                }
+            }
+
+            // NEW: Validate that unit rent fields are filled if units are selected
+            const unitSelect = document.getElementById('unitSelect');
+            const selectedUnits = parseInt(unitSelect.value || 0);
+            
+            if (selectedUnits > 0) {
+                for (let i = 1; i <= selectedUnits; i++) {
+                    const unitField = document.getElementById(`unit-${i}`);
+                    if (!unitField || !unitField.value || unitField.value.trim() === '') {
+                        const errorMessage = language === 'en' 
+                            ? `Please enter a rent amount for Unit ${i}.` 
+                            : `Por favor, ingrese un monto de renta para la Unidad ${i}.`;
+                        alert(errorMessage);
+                        unitField.focus();
+                        return;
+                    }
                 }
             }
 
@@ -692,8 +713,8 @@
             const capex = getNumericValue('capex') / 100;
             const monthlyMaintenanceReserves = getNumericValue('monthly-maintenance-reserves') / 100;
             const managementFee = getNumericValue('management-fee') / 100;
-            const unitSelect = getNumericValue('unitSelect');
-            // utitlities
+            const unitSelectValue = getNumericValue('unitSelect');
+            // utilities
             const waterSewer = getNumericValue('water-sewer');
             const garbage = getNumericValue('garbage');
             const gas = getNumericValue('gas');
@@ -819,7 +840,7 @@
              const rentInputs = rentFields.querySelectorAll('input');
              let totalMonthlyRentRoll = 0;
                 rentInputs.forEach(i => {
-                    totalMonthlyRentRoll += parseFloat(i.value) || 0;
+                    totalMonthlyRentRoll += parseFloat(i.value.replace(/,/g, '')) || 0;
                 });
                 
                 const totalAnnualRentRoll = totalMonthlyRentRoll * 12;
@@ -863,12 +884,12 @@
                         <div style="margin-left: 100px;">* Costo Total del Proyecto: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo de Renovación: $${showRenovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                    </span>
+                    </span><br>
 
                     <h2><strong>Resumen de la lista de alquileres</strong></h2>
-                    <p>Unidades totales: ${unitSelect}</p>
-                    <p>Total mensual: $${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Total Anual: $${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Unidades totales: ${unitSelectValue}</p>
+                    <p>Total mensual: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Anual: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total de vacantes y CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -935,10 +956,10 @@
                             <div style="margin-left: 100px;">* Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Renovation Cost: $${showRenovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                        </span>
+                        </span> <br>
                     
                     <h2><strong>Rent Roll Summary</strong></h2>
-                    <p>Total Units: ${unitSelect}</p>
+                    <p>Total Units: ${unitSelectValue}</p>
                     <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
