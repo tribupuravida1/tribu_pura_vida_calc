@@ -389,7 +389,7 @@
                     "label-down-payment-percentage": "Down Payment Percentage",
                     "label-loan-includes-renovation": "Does the Loan Include Renovation Costs?",
                     "label-loan-interest": "Interest Rate",
-                    "label-holding-period": "Holding Period (Months)",
+                    "label-holding-period": "Pre-rent Holding Period (Months)",
                     "label-renovation-cost": "Renovation Cost",
                     "label-purchase-closing-cost": "Purchase Closing Cost Percentage",
                     "label-property-taxes": "Yearly Property Taxes",
@@ -659,7 +659,7 @@
                 'loan-interest', 'holding-period', 'renovation-cost', 
                 'purchase-closing-cost', 'property-taxes', 'insurance',
                 'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
-                'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control'
+                'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control', 'unitSelect'
             ];
 
             for (let fieldId of requiredFields) {
@@ -854,7 +854,7 @@
                     <p>Costo Total de Mantenimiento: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Costos de Cierre</strong></h2>
-                    <p>Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Efectivo Necesario</strong></h2>
                     <p>Efectivo Total Necesario: $${total_cash_needed_v3.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -926,7 +926,7 @@
 
 
                      <h2><strong>Closing Cost Summary</strong></h2>
-                    <p>Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Cash Needed Summary</strong></h2>
                     <p>Total Cash Needed: $${total_cash_needed_v3.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
