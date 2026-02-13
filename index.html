@@ -34,8 +34,9 @@
             
             <div class="lg:flex lg:space-x-6">
                 <!-- Calculator Form -->
-                <div class="lg:w-1/2 bg-gray-50 p-6 rounded-lg shadow-md mb-6 lg:mb-0 flex-none min-h-[600px] sm:min-h-[700px]"">
+                <div class="lg:w-1/2 mb-6 lg:mb-0 flex-none min-h-[600px] sm:min-h-[700px]">
                     <form id="calculator-form" class="">
+                        <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-home-price" class="block text-gray-700 mb-1 text-sm" for="home-price">
@@ -97,7 +98,7 @@
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-holding-period" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        The total months from purchase through renovation to sale.
+                                        The total months of zero rent coming in.
                                     </span>
                             </label>
                             <input type="text" id="holding-period" class="w-full p-2 border border-gray-300 rounded" placeholder="E.g., 6" required>
@@ -159,13 +160,23 @@
                             </div>
                         </div>
                             <div>
-                                <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">Rent Roll Number of Units</label>
+                                <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">
+                                    Rent Roll Number of units
+                                    <span class="relative inline-block cursor-help group">
+                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                        <span id="tooltip-rent-roll-units" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                            Amount of rent per unit that the property is receiving.
+                                        </span>
+                                    </span>
+                                </label>
                                 <select id="unitSelect" class="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-200">
                                 <option value="">Select units</option>
                                 <option value="1">1 Unit</option>
                                 <option value="2">2 Units</option>
                                 <option value="3">3 Units</option>
                                 <option value="4">4 Units</option>
+                                <option value="5">5 Units</option>
+                                <option value="6">6 Units</option>
                                 </select>
                             </div>
                         </div>
@@ -175,9 +186,11 @@
                                 <!-- Unit Rows -->
                                 <div id="rentFields" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2"></div>
                             </div>
+                        </div>
 
                         <!-- ================= UTILITIES ================= -->
-                        <h2 id="label-estimated-monthly-utilities" class="text-base font-medium mb-4"> Estimated Monthly Utilities</h2>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+                        <h2 id="label-estimated-monthly-utilities" class="text-base font-semibold mb-4"> Estimated Monthly Utilities</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
                             <div>
                                 <label id="label-garbage" class="block text-gray-700 mb-1 text-sm" for="garbage">Garbage
@@ -215,6 +228,7 @@
                                         <span id="tooltip-water" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
                                             Estimated water costs for the property.
                                         </span>
+                                        </span>
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
@@ -227,6 +241,7 @@
                                         <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                         <span id="tooltip-electricity" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
                                             Estimated electricity costs for the property.
+                                        </span>
                                         </span>
                                 </label>
                                 <div class="relative">
@@ -244,6 +259,7 @@
                                         <span id="tooltip-pest-control" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
                                             Estimated pest control costs for the property.
                                         </span>
+                                        </span>
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
@@ -257,6 +273,7 @@
                                         <span id="tooltip-water-sewer" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
                                             Estimated water and sewer costs for the property.
                                         </span>
+                                    </span>
                                 </label>
                                 <div class="relative">
                                     <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
@@ -264,8 +281,12 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                         
 
+                 <!-- ================= Additional Monthly Costs ================= -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
+                    <h2 id="label-additional-monthly-costs" class="text-base font-semibold mb-4"> Additional Monthly Costs </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-vacancy-rate" class="block text-gray-700 mb-1 text-sm" for="vacancy-rate">Vacancy Rate
@@ -303,7 +324,7 @@
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-monthly-maintenance-reserves" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        The Monthly Maintenance Reserves of your loan.
+                                        The percentage of the total income through rents that come into the property.
                                     </span>
                                 </span>
                             </label>
@@ -317,7 +338,7 @@
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-management-fee" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        Management Fee.
+                                        The percentage of the total rent paid to management company if using management company.
                                     </span>
                                 </span>
                             </label>
@@ -326,6 +347,7 @@
                                 <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
+                    </div>
                     </div>
                         
                     </form>
@@ -418,13 +440,16 @@
                     "label-unit-2": "Unit 2",
                     "label-unit-3": "Unit 3",
                     "label-unit-4": "Unit 4",
+                    "label-unit-5": "Unit 5",
+                    "label-unit-6": "Unit 6",
+                    "label-additional-monthly-costs": "Additional Monthly Costs",
 
 
                     // Tooltip translations
                     "tooltip-home-price": "How much you're offering to buy the house.",
                     "tooltip-down-payment": "The percentage of the downpayment on your loan.",
                     "tooltip-interest-rate": "The interest rate of your loan.",
-                    "tooltip-holding-period": "The total months from purchase through renovation to sale.",
+                    "tooltip-holding-period": "The total months of zero rent coming in.",
                     "tooltip-renovation-cost": "The total cost of your renovations.",
                     "tooltip-purchase-closing": "Fees related to the purchase closing, as a percentage of the home price.",
                     "tooltip-property-taxes": "Annual property taxes.",
@@ -440,8 +465,9 @@
                     "tooltip-pest-control": "Estimated pest control costs for the property.",
                     "tooltip-vacancy-rate": "Percentage of the property's total income that is set aside to account for potential vacancies and periods when units are not generating income during the year. This reserve covers expenses during the time the unit is vacant.",
                     "tooltip-capex": "Percentage of the property's total income that is set aside to account for large, infrequent expenses intended to improve or extend the useful life of a property. Examples: new roof, new heating system, major renovations.",
-                    "tooltip-monthly-maintenance-reserves": "Percentage of a property's total income set aside to cover ongoing maintenance and repairs, such as landscaping, snow removal, and routine tenant requests like a clogged toilet.",
-                    "tooltip-management-fee": "Percentage of the total rent paid to a management company in exchange for managing and operating the property.",
+                    "tooltip-monthly-maintenance-reserves": "The percentage of the total income through rents that come into the property.",
+                    "tooltip-management-fee": "The percentage of the total rent paid to management company if using management company.",
+                    "tooltip-rent-roll-units": "Amount of rent per unit that the property is receiving.",
 
                     
                 },
@@ -478,12 +504,15 @@
                     "label-unit-2": "Unidad 2",
                     "label-unit-3": "Unidad 3",
                     "label-unit-4": "Unidad 4",
+                    "label-unit-5": "Unidad 5",
+                    "label-unit-6": "Unidad 6",
+                    "label-additional-monthly-costs": "Costos Mensuales Adicionales",
 
                     // Tooltip translations
                     "tooltip-home-price": "Cuánto estás ofreciendo para comprar la casa.",
                     "tooltip-down-payment": "El porcentaje del pago inicial de tu préstamo.",
                     "tooltip-interest-rate": "La tasa de interés de tu préstamo.",
-                    "tooltip-holding-period": "El total de meses desde la compra hasta la venta, incluyendo la renovación.",
+                    "tooltip-holding-period": "La totalidad de meses sin pago de alquiler.",
                     "tooltip-renovation-cost": "El costo total de tus renovaciones.",
                     "tooltip-purchase-closing": "Honorarios relacionados con el cierre de la compra, como porcentaje del precio de la casa.",
                     "tooltip-property-taxes": "Impuestos anuales de propiedad.",
@@ -499,8 +528,9 @@
                     "tooltip-pest-control": "Costos estimados de control de plagas para la propiedad.",
                     "tooltip-vacancy-rate": "Porcentaje del ingreso total de la propiedad que se aparta para el potencial de unidades que estarán vacías y no generando ingresos durante el año, esta reserva cubre los gastos durante el tiempo que la unidad está vacante.",
                     "tooltip-capex": "Porcentaje del ingreso total de la propiedad que se aparta para gastos grandes y poco frecuentes destinados a mejorar o extender la vida útil de una propiedad. Ejemplos: techo nuevo, sistema de calefacción nuevo, remodelaciones mayores.",
-                    "tooltip-monthly-maintenance-reserves": "Porcentaje del ingreso total de la propiedad que se aparta para cubrir mantenimiento y reparaciones recurrentes, como jardinería, remoción de nieve y solicitudes rutinarias de los inquilinos, por ejemplo un inodoro tapado",
-                    "tooltip-management-fee": "Porcentaje de la renta total que se paga a la compañía administradora a cambio de la gestión y operación de la propiedad.",
+                    "tooltip-monthly-maintenance-reserves": "El porcentaje del ingreso total por alquileres que ingresa a la propiedad.",
+                    "tooltip-management-fee": "El porcentaje del alquiler total pagado a la empresa administradora si se utiliza una empresa administradora.",
+                    "tooltip-rent-roll-units": "Cantidad de alquiler por unidad que la propiedad está recibiendo.",
 
                 }
             };
@@ -564,12 +594,16 @@
                     unitOptions[2].text = "2 Units";
                     unitOptions[3].text = "3 Units";
                     unitOptions[4].text = "4 Units";
+                    unitOptions[5].text = "5 Units";
+                    unitOptions[6].text = "6 Units";
                 } else {
                     unitOptions[0].text = "Seleccionar unidades";
                     unitOptions[1].text = "1 Unidad";
                     unitOptions[2].text = "2 Unidades";
                     unitOptions[3].text = "3 Unidades";
                     unitOptions[4].text = "4 Unidades";
+                    unitOptions[5].text = "5 Unidades";
+                    unitOptions[6].text = "6 Unidades";
                 }
             }
 
@@ -600,6 +634,8 @@
                     "unit-2": "E.g., 3000",
                     "unit-3": "E.g., 3000",
                     "unit-4": "E.g., 3000",
+                    "unit-5": "E.g., 3000",
+                    "unit-6": "E.g., 3000",
                     "vacancy-rate": "E.g., 5",
                     "capex": "E.g., 5",
                     "maintenance-reserves": "E.g., 5",
@@ -628,6 +664,8 @@
                     "unit-2": "Ej., 3000",
                     "unit-3": "Ej., 3000",
                     "unit-4": "Ej., 3000",
+                    "unit-5": "Ej., 3000",
+                    "unit-6": "Ej., 3000",
                     "vacancy-rate": "Ej., 5",
                     "capex": "Ej., 5",
                     "maintenance-reserves": "Ej., 5",
@@ -1000,11 +1038,11 @@
     // Select all inputs that should accept only positive numbers
     // Enforce digits only for all number inputs
     document.querySelectorAll('input[type="text"]').forEach(input => {
-    input.addEventListener('input', (e) => {
-    e.target.value = e.target.value
-        .replace(/[^0-9.]/g, '')     // Remove everything except digits and dot
-        .replace(/(\..*)\./g, '$1'); // Allow only one decimal point
-    });
+        input.addEventListener('input', (e) => {
+        e.target.value = e.target.value
+            .replace(/[^0-9.]/g, '')     // Remove everything except digits and dot
+            .replace(/(\..*)\./g, '$1'); // Allow only one decimal point
+        });
     });
 
     const unitSelect = document.getElementById('unitSelect');
