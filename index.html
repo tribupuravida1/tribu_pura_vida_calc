@@ -882,11 +882,11 @@
                 });
                 
                 const totalAnnualRentRoll = totalMonthlyRentRoll * 12;
-                const vacancyRateAmount = vacancyRate * totalAnnualRentRoll;
-                const capexAmount = capex * totalAnnualRentRoll;
+                const vacancyRateAmount = vacancyRate * totalMonthlyRentRoll;
+                const capexAmount = capex * totalMonthlyRentRoll;
                 const totalVacancyAndCapex = vacancyRateAmount + capexAmount;
                 const maintenanceReservesAmount = monthlyMaintenanceReserves * totalVacancyAndCapex;
-                const managementFeeAmount = managementFee * totalAnnualRentRoll;
+                const managementFeeAmount = managementFee * totalMonthlyRentRoll;
 
 
             if (language === 'es') {
@@ -901,15 +901,16 @@
                     <p>Monto Total del Préstamo: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
-                    <h2><strong>Resumen de Costos de Mantenimiento</strong></h2>
+                    <h2><strong>Resumen del costo mensual de la propiedad</strong></h2>
                     <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
-                        <div style="margin-left: 100px;">* Servicios Públicos Anuales ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                    </span>
+                    </span><br>
+
+                    <h2><strong>Resumen de Costos de Mantenimiento</strong></h2>
                     <p>Costo Total de Mantenimiento: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Costos de Cierre</strong></h2>
@@ -924,15 +925,19 @@
                         <div style="margin-left: 100px;">* Costo de Renovación: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span><br>
 
-                    <h2><strong>Resumen de la lista de alquileres</strong></h2>
-                    <p>Unidades totales: ${unitSelectValue}</p>
-                    <p>Total mensual: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Total Anual: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <h2><strong>Resumen de costos mensuales adicionales</strong></h2>
                     <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total de vacantes y CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de la tarifa de gestión: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    
+                    <br>
+                    <h2><strong>Resumen de la lista de alquileres</strong></h2>
+                    <p>Unidades totales: ${unitSelectValue}</p>
+                    <p>Total mensual: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Anual: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    
                 `;
 
 
@@ -970,17 +975,17 @@
                     <p>Total Loan Amount: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
-                    <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
+                    <h2><strong>Monthly Cost of the Property Summary</strong></h2>
                     <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                             <span style="font-size: 0.85em;">
                                <div style="margin-left: 100px;"> * Monthly Property Tax Payment ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Insurance Payment ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Utilities ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
-                               <div style="margin-left: 100px;"> * Annual Utilities ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
                                <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                            </span>
+                            </span><br>
 
+                    <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
                     <p>Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
 
@@ -996,15 +1001,18 @@
                             <div style="margin-left: 100px;">* Renovation Cost: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         </span> <br>
                     
-                    <h2><strong>Rent Roll Summary</strong></h2>
-                    <p>Total Units: ${unitSelectValue}</p>
-                    <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <h2><strong>Additional Monthly Cost Summary</strong></h2>
                     <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>CapEx Amount: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Vacancy & CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Maintenance Reserves Amount: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Management Fee Amount: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    
+                    <br>
+                    <h2><strong>Rent Roll Summary</strong></h2>
+                    <p>Total Units: ${unitSelectValue}</p>
+                    <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     
                     
                 `;
