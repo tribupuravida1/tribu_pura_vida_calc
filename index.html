@@ -1062,6 +1062,25 @@
             </div>
         `;
         rentFields.appendChild(field);
+        
+        // Add event listeners to the newly created input
+        const unitInput = document.getElementById(`unit-${i}`);
+        
+        // Add blur event for formatting with commas and decimals
+        unitInput.addEventListener("blur", function () {
+            let value = this.value.replace(/,/g, ''); // Remove existing commas
+            if (!isNaN(value) && value !== '') {
+                this.value = parseFloat(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            }
+        });
+        
+        // Add input event for dynamic comma insertion
+        unitInput.addEventListener("input", function () {
+            let value = this.value.replace(/,/g, '').replace(/[^\d.]/g, ''); // Remove non-numeric characters except "."
+            if (!isNaN(value) && value !== '') {
+                this.value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ','); // Add commas dynamically
+            }
+        });
       }
     });
   </script>
