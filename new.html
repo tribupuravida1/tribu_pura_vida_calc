@@ -78,19 +78,6 @@
                             </select>
                         </div>
                         <div>
-                            <label id="label-term-loan" class="block text-gray-700 mb-1 text-sm" for="term-loan">Term Loan (Months)
-                                <span class="relative inline-block cursor-help group">
-                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-term-loan" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        Term of the loan in number of months e.g. A 30-Year loan = 360 term.
-                                    </span>
-                                </span>
-                            </label>
-                                <input type="text" id="term-loan" class="w-full p-2 border border-gray-300 rounded" placeholder="E.g., 360" required>
-                        </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
                             <label id="label-loan-interest" class="block text-gray-700 mb-1 text-sm" for="loan-interest">Interest Rate
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
@@ -104,6 +91,21 @@
                                 <span class="ml-2 text-gray-500">% </span>
                             </div>
                         </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label id="label-loan-term" class="block text-gray-700 mb-1 text-sm" for="loan-term">Loan Term (Months)
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-loan-term" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        The total length of the loan in months (e.g., 360 months = 30 years).
+                                    </span>
+                            </label>
+                            <input type="text" id="loan-term" class="w-full p-2 border border-gray-300 rounded" placeholder="E.g., 360" value="360" required>
+                        </div>
+                        <div></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-holding-period" class="block text-gray-700 mb-1 text-sm" for="holding-period">Pre-rent Holding Period (Months)
                                 <span class="relative inline-block cursor-help group">
@@ -113,9 +115,7 @@
                                     </span>
                             </label>
                             <input type="text" id="holding-period" class="w-full p-2 border border-gray-300 rounded" placeholder="E.g., 6" required>
-                        </div> 
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-renovation-cost" class="block text-gray-700 mb-1 text-sm" for="renovation-cost">Renovation Cost
                                 <span class="relative inline-block cursor-help group">
@@ -128,7 +128,9 @@
                                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
                                 <input type="text" id="renovation-cost" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 50000" required>
                             </div>
-                        </div> 
+                        </div>  
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div class="pt-1">
                             <label class="block text-gray-700 mb-1 text-[11.5px]" id="label-purchase-closing-cost" for="purchase-closing-cost">Purchase Closing Cost Percentage
                                 <span class="relative inline-block cursor-help group">
@@ -141,9 +143,7 @@
                                 <input type="text" id="purchase-closing-cost" class="w-full outline-none" placeholder="E.g., 3" step="0.01" required>
                                 <span class="ml-2 text-gray-700">%</span>
                             </div>
-                        </div>   
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
+                        </div>  
                         <div>
                             <label id="label-property-taxes" class="block text-gray-700 mb-1 text-sm" for="property-taxes">Yearly Property Taxes
                                 <span class="relative inline-block cursor-help group">
@@ -156,7 +156,9 @@
                                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
                                 <input type="text" id="property-taxes" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
                             </div>
-                        </div>                      
+                        </div> 
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
                         <div>
                             <label id="label-insurance" class="block text-gray-700 mb-1 text-sm" for="insurance">Yearly Insurance
                                 <span class="relative inline-block cursor-help group">
@@ -170,8 +172,6 @@
                                 <input type="text" id="insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
                             </div>
                         </div>
-                        </div>
-                        <div>
                             <div>
                                 <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">
                                     Rent Roll Number of units
@@ -195,7 +195,7 @@
                         </div>
 
                         <!-- ================= RENT ROLL ================= -->
-                            <div class="pt-4">
+                            <div class="">
                                 <!-- Unit Rows -->
                                 <div id="rentFields" class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2"></div>
                             </div>
@@ -337,7 +337,7 @@
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-monthly-maintenance-reserves" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        The percentage of the total income through rent that come into the property that is escrowed to cover maintenance.
+                                        The percentage of the total income through rents that come into the property.
                                     </span>
                                 </span>
                             </label>
@@ -351,7 +351,7 @@
                                 <span class="relative inline-block cursor-help group">
                                     <span class="text-blue-600 cursor-pointer">ℹ️</span>
                                     <span id="tooltip-management-fee" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        The percentage of the total rent paid to management company if using a management company.
+                                        The percentage of the total rent paid to management company if using management company.
                                     </span>
                                 </span>
                             </label>
@@ -424,6 +424,7 @@
                     "label-down-payment-percentage": "Down Payment Percentage",
                     "label-loan-includes-renovation": "Does the Loan Include Renovation Costs?",
                     "label-loan-interest": "Interest Rate",
+                    "label-loan-term": "Loan Term (Months)",
                     "label-holding-period": "Pre-rent Holding Period (Months)",
                     "label-renovation-cost": "Renovation Cost",
                     "label-purchase-closing-cost": "Purchase Closing Cost Percentage",
@@ -456,13 +457,13 @@
                     "label-unit-5": "Unit 5",
                     "label-unit-6": "Unit 6",
                     "label-additional-monthly-costs": "Additional Monthly Costs",
-                    "label-term-loan": "Term Loan (Months)",
 
 
                     // Tooltip translations
                     "tooltip-home-price": "How much you're offering to buy the house.",
                     "tooltip-down-payment": "The percentage of the downpayment on your loan.",
                     "tooltip-interest-rate": "The interest rate of your loan.",
+                    "tooltip-loan-term": "The total length of the loan in months (e.g., 360 months = 30 years).",
                     "tooltip-holding-period": "The total months of zero rent coming in.",
                     "tooltip-renovation-cost": "The total cost of your renovations.",
                     "tooltip-purchase-closing": "Fees related to the purchase closing, as a percentage of the home price.",
@@ -479,10 +480,9 @@
                     "tooltip-pest-control": "Estimated pest control costs for the property.",
                     "tooltip-vacancy-rate": "Percentage of the property's total income that is set aside to account for potential vacancies and periods when units are not generating income during the year. This reserve covers expenses during the time the unit is vacant.",
                     "tooltip-capex": "Percentage of the property's total income that is set aside to account for large, infrequent expenses intended to improve or extend the useful life of a property. Examples: new roof, new heating system, major renovations.",
-                    "tooltip-monthly-maintenance-reserves": "The percentage of the total income through rent that come into the property that is escrowed to cover maintenance.",
-                    "tooltip-management-fee": "The percentage of the total rent paid to management company if using a management company.",
+                    "tooltip-monthly-maintenance-reserves": "The percentage of the total income through rents that come into the property.",
+                    "tooltip-management-fee": "The percentage of the total rent paid to management company if using management company.",
                     "tooltip-rent-roll-units": "Amount of rent per unit that the property is receiving.",
-                    "tooltip-term-loan": "Term of the loan in number of months e.g. A 30-Year loan = 360 term",
 
                     
                 },
@@ -491,6 +491,7 @@
                     "label-down-payment-percentage": "Porcentaje de Pago Inicial",
                     "label-loan-includes-renovation": "¿El préstamo incluye costos de renovación?",
                     "label-loan-interest": "Tasa de Interés",
+                    "label-loan-term": "Plazo del Préstamo (Meses)",
                     "label-holding-period": "Período de Retención (Meses)",
                     "label-renovation-cost": "Costo de Renovación",
                     "label-purchase-closing-cost": "Porcentaje de Costos de Cierre de Compra",
@@ -522,12 +523,12 @@
                     "label-unit-5": "Unidad 5",
                     "label-unit-6": "Unidad 6",
                     "label-additional-monthly-costs": "Costos Mensuales Adicionales",
-                    "label-term-loan": "Préstamo a plazo (meses)",
 
                     // Tooltip translations
                     "tooltip-home-price": "Cuánto estás ofreciendo para comprar la casa.",
                     "tooltip-down-payment": "El porcentaje del pago inicial de tu préstamo.",
                     "tooltip-interest-rate": "La tasa de interés de tu préstamo.",
+                    "tooltip-loan-term": "La duración total del préstamo en meses (por ejemplo, 360 meses = 30 años).",
                     "tooltip-holding-period": "La totalidad de meses sin pago de alquiler.",
                     "tooltip-renovation-cost": "El costo total de tus renovaciones.",
                     "tooltip-purchase-closing": "Honorarios relacionados con el cierre de la compra, como porcentaje del precio de la casa.",
@@ -544,10 +545,9 @@
                     "tooltip-pest-control": "Costos estimados de control de plagas para la propiedad.",
                     "tooltip-vacancy-rate": "Porcentaje del ingreso total de la propiedad que se aparta para el potencial de unidades que estarán vacías y no generando ingresos durante el año, esta reserva cubre los gastos durante el tiempo que la unidad está vacante.",
                     "tooltip-capex": "Porcentaje del ingreso total de la propiedad que se aparta para gastos grandes y poco frecuentes destinados a mejorar o extender la vida útil de una propiedad. Ejemplos: techo nuevo, sistema de calefacción nuevo, remodelaciones mayores.",
-                    "tooltip-monthly-maintenance-reserves": "El porcentaje del ingreso total por alquiler que ingresa a la propiedad que se deposita en garantía para cubrir el mantenimiento.",
+                    "tooltip-monthly-maintenance-reserves": "El porcentaje del ingreso total por alquileres que ingresa a la propiedad.",
                     "tooltip-management-fee": "El porcentaje del alquiler total pagado a la empresa administradora si se utiliza una empresa administradora.",
                     "tooltip-rent-roll-units": "Cantidad de alquiler por unidad que la propiedad está recibiendo.",
-                    "tooltip-term-loan": "Plazo del préstamo en número de meses, p. ej. Un préstamo a 30 años = plazo de 360.",
 
                 }
             };
@@ -633,6 +633,7 @@
                     "home-price": "E.g., 150000",
                     "down-payment-percentage": "E.g., 20",
                     "loan-interest": "E.g., 5",
+                    "loan-term": "E.g., 360",
                     "holding-period": "E.g., 6",
                     "renovation-cost": "E.g., 50000",
                     "purchase-closing-cost": "E.g., 3",
@@ -657,13 +658,13 @@
                     "capex": "E.g., 5",
                     "maintenance-reserves": "E.g., 5",
                     "management-fee": "E.g., 5",
-                    "term-loan": "E.g., 360",
-
+                    
                 },
                 es: {
                     "home-price": "Ej., 150000",
                     "down-payment-percentage": "Ej., 20",
                     "loan-interest": "Ej., 5",
+                    "loan-term": "Ej., 360",
                     "holding-period": "Ej., 6",
                     "renovation-cost": "Ej., 50000",
                     "purchase-closing-cost": "Ej., 3",
@@ -688,7 +689,6 @@
                     "capex": "Ej., 5",
                     "maintenance-reserves": "Ej., 5",
                     "management-fee": "Ej., 5",
-                    "term-loan": "Ej., 360",
                     
                 }
             };
@@ -713,11 +713,10 @@
             // Check if any required field is empty
             const requiredFields = [
                 'home-price', 'down-payment-percentage', 'loan-includes-renovation', 
-                'loan-interest', 'holding-period', 'renovation-cost', 
+                'loan-interest', 'loan-term', 'holding-period', 'renovation-cost', 
                 'purchase-closing-cost', 'property-taxes', 'insurance',
                 'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
-                'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control', 'unitSelect',
-                'term-loan'
+                'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control', 'unitSelect'
             ];
 
             for (let fieldId of requiredFields) {
@@ -761,7 +760,7 @@
             const loanIncludesRenovation_v2 = document.getElementById('loan-includes-renovation');
             const renovationCost = getNumericValue('renovation-cost');
             const loanInterestRate = getNumericValue('loan-interest');
-            const termLoan = getNumericValue('term-loan');
+            const loanTerm = getNumericValue('loan-term');
             const holdingPeriod = getNumericValue('holding-period');
             const purchaseClosingCostPercentage = getNumericValue('purchase-closing-cost') / 100;
             const propertyTaxes = getNumericValue('property-taxes') / 12;
@@ -806,17 +805,18 @@
             const downPayment = loanAmount * downPaymentPercentage;
 
             // Calculate Monthly Mortgage Payment using PMT formula
-            // Formula: =-PMT((interest_rate/12), term_months, loan_amount)
+            // PMT = P * [r(1 + r)^n] / [(1 + r)^n - 1]
+            // Where: P = loan amount, r = monthly interest rate, n = number of payments
             const monthlyInterestRate = (loanInterestRate / 100) / 12;
             let monthlyMortgagePayment = 0;
             
             if (monthlyInterestRate > 0) {
-                const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termLoan);
-                const denominator = Math.pow(1 + monthlyInterestRate, termLoan) - 1;
+                const numerator = monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm);
+                const denominator = Math.pow(1 + monthlyInterestRate, loanTerm) - 1;
                 monthlyMortgagePayment = total_loan_amount * (numerator / denominator);
             } else {
                 // If interest rate is 0, just divide loan by term
-                monthlyMortgagePayment = total_loan_amount / termLoan;
+                monthlyMortgagePayment = total_loan_amount / loanTerm;
             }
             
             const annualMortgagePayment = monthlyMortgagePayment * 12;
@@ -919,11 +919,11 @@
                 });
                 
                 const totalAnnualRentRoll = totalMonthlyRentRoll * 12;
-                const vacancyRateAmount = vacancyRate * totalMonthlyRentRoll;
-                const capexAmount = capex * totalMonthlyRentRoll;
+                const vacancyRateAmount = vacancyRate * totalAnnualRentRoll;
+                const capexAmount = capex * totalAnnualRentRoll;
                 const totalVacancyAndCapex = vacancyRateAmount + capexAmount;
                 const maintenanceReservesAmount = monthlyMaintenanceReserves * totalVacancyAndCapex;
-                const managementFeeAmount = managementFee * totalMonthlyRentRoll;
+                const managementFeeAmount = managementFee * totalAnnualRentRoll;
 
 
             if (language === 'es') {
@@ -936,26 +936,20 @@
                     <h2><strong>Resumen del Préstamo</strong></h2>
                     <p>Pago Inicial: $${downPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto Total del Préstamo: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Plazo del Préstamo: ${termLoan} meses</p>
-                    <p>Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Plazo del Préstamo: ${loanTerm.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} meses</p>
+                    <p><strong>Pago Mensual de Hipoteca: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
+                    <p>Pago Anual de Hipoteca: $${annualMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
-                    <h2><strong>Resumen del costo mensual de la propiedad</strong></h2>
+                    <h2><strong>Resumen de Costos de Mantenimiento</strong></h2>
                     <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
+                        <div style="margin-left: 100px;">* Servicios Públicos Anuales ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                    </span><br>
-
-                    <h2><strong>Resumen de costos mensuales adicionales</strong></h2>
-                    <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Monto de la tarifa de gestión: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
-                    <br>
-
-                    <h2><strong>Resumen de Costos de Mantenimiento</strong></h2>
+                    </span>
                     <p>Costo Total de Mantenimiento: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Costos de Cierre</strong></h2>
@@ -968,14 +962,17 @@
                         <div style="margin-left: 100px;">* Costo Total del Proyecto: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo de Renovación: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                    </span>
+                    </span><br>
 
-                    <br>
                     <h2><strong>Resumen de la lista de alquileres</strong></h2>
                     <p>Unidades totales: ${unitSelectValue}</p>
-                    <p>Alquiler mensual total: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Alquiler total anual: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    
+                    <p>Total mensual: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Anual: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total de vacantes y CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Monto de la tarifa de gestión: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
                 `;
 
 
@@ -1011,27 +1008,22 @@
                     <h2><strong>Loan Summary</strong></h2>
                     <p>Down Payment: $${downPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Loan Amount: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Loan Term: ${termLoan} months</p>
-                    <p>Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Loan Term: ${loanTerm.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} months</p>
+                    <p><strong>Monthly Mortgage Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
+                    <p>Annual Mortgage Payment: $${annualMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
-                    <h2><strong>Monthly Cost of the Property Summary</strong></h2>
+                    <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
                     <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                             <span style="font-size: 0.85em;">
                                <div style="margin-left: 100px;"> * Monthly Property Tax Payment ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Insurance Payment ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Utilities ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
-                               <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                            </span><br>
-                                        
-                    <h2><strong>Additional Monthly Cost Summary</strong></h2>
-                    <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>CapEx Amount: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Maintenance Reserves Amount: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Management Fee Amount: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                  
-                    <br>
-                    <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
+                               <div style="margin-left: 100px;"> * Annual Utilities ($${totalAnnualUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
+                               <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                            </span>
+
                     <p>Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
 
@@ -1045,12 +1037,17 @@
                             <div style="margin-left: 100px;">* Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Renovation Cost: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
-                        </span>  
-                    <br>
+                        </span> <br>
+                    
                     <h2><strong>Rent Roll Summary</strong></h2>
                     <p>Total Units: ${unitSelectValue}</p>
-                    <p>Total Monthly Rent: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                    <p>Total Annually Rent: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Monthly: $${totalMonthlyRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Annually: $${totalAnnualRentRoll.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>CapEx Amount: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Vacancy & CapEx: $${totalVacancyAndCapex.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Maintenance Reserves Amount: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Management Fee Amount: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     
                     
                 `;
@@ -1063,16 +1060,12 @@
                     <h3 class="text-2xl font-bold mb-4">Cash Flow and Return on Investment Results</h3>
 
                     <!-- Scenario 1 -->
-                    <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
-                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
-                            <p>Monthly Cash Flow</p>
+                    <div class="flex justify-center items-center gap-8 mb-8">
+                        <div class="flex flex-col items-center justify-center w-32 h-32 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md">
+                            <p>Cash Flow</p>
                             <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
-                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
-                            <p>Analyzed Cash Flow</p>
-                            <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                        </div>
-                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
+                        <div class="flex flex-col items-center justify-center w-32 h-32 bg-green-100 text-green-700 font-bold rounded-full shadow-md">
                             <p>ROI</p>
                             <p>${scenario1ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
                         </div>
