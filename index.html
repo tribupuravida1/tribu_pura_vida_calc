@@ -919,11 +919,41 @@
                 });
                 
                 const totalAnnualRentRoll = totalMonthlyRentRoll * 12;
+                
+                // Calculate on MONTHLY basis
                 const vacancyRateAmount = vacancyRate * totalMonthlyRentRoll;
                 const capexAmount = capex * totalMonthlyRentRoll;
                 const totalVacancyAndCapex = vacancyRateAmount + capexAmount;
                 const maintenanceReservesAmount = monthlyMaintenanceReserves * totalVacancyAndCapex;
                 const managementFeeAmount = managementFee * totalMonthlyRentRoll;
+
+                // Calculate Effective Gross Income (EGI) - Annual
+                const effectiveGrossIncome = totalAnnualRentRoll - (vacancyRateAmount * 12) - (capexAmount * 12);
+                
+                // Calculate Total Annual Expenses
+                const totalAnnualExpenses = showPropertyTaxes + showInsurance + totalAnnualUtilities + (maintenanceReservesAmount * 12) + (managementFeeAmount * 12);
+                
+                // Calculate Net Operating Income (NOI) = EGI - Total Expenses
+                const netOperatingIncome = effectiveGrossIncome - totalAnnualExpenses;
+                
+                // Calculate Annual Mortgage Payment
+                const annualMortgagePaymentCalc = monthlyMortgagePayment * 12;
+                
+                // Calculate Net Income After Mortgage = NOI - Annual Mortgage Payment
+                const netIncomeAfterMortgage = netOperatingIncome - annualMortgagePaymentCalc;
+                
+                // Calculate total cash invested for ROI
+                const totalCashInvested = downPayment + purchaseClosingCost + showRenovationCost;
+                
+                // Calculate ROI = Net Income After Mortgage / Total Cash Invested
+                const calculatedROI = (netIncomeAfterMortgage / totalCashInvested) * 100;
+                
+                // Calculate Monthly Cash Flow
+                const totalMonthlyCostWithMortgage = monthlyMortgagePayment + propertyTaxes + insurance + totalMonthlyUtilities + vacancyRateAmount + capexAmount + maintenanceReservesAmount + managementFeeAmount;
+                const monthlyCashFlow = totalMonthlyRentRoll - totalMonthlyCostWithMortgage;
+                
+                // Analyzed Cash Flow (same as Net Income After Mortgage but monthly)
+                const analyzedCashFlow = netIncomeAfterMortgage / 12;
 
 
             if (language === 'es') {
@@ -945,7 +975,7 @@
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
-                        <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyInterest_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                        <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span><br>
 
                     <h2><strong>Resumen de costos mensuales adicionales</strong></h2>
@@ -983,17 +1013,21 @@
                 document.getElementById('scenarios').style.display = 'block';
 
                 document.getElementById('scenarios').innerHTML = `
-                    <h3 class="text-2xl font-bold mb-4">Resultados de Ganancia y Retorno de Inversión</h3>
+                    <h3 class="text-2xl font-bold mb-4">Resultados de Flujo de Caja y Retorno de Inversión</h3>
 
                     <!-- Escenario 1 -->
-                    <div class="flex justify-center items-center gap-8 mb-8">
-                        <div class="flex flex-col items-center justify-center w-32 h-32 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md">
-                            <p>Ganancia</p>
-                            <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
+                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
+                            <p>Flujo de Caja Mensual</p>
+                            <p>$${monthlyCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
-                        <div class="flex flex-col items-center justify-center w-32 h-32 bg-green-100 text-green-700 font-bold rounded-full shadow-md">
+                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
+                            <p>Flujo de Caja Analizado</p>
+                            <p>$${analyzedCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                        </div>
+                        <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
                             <p>ROI</p>
-                            <p>${scenario1ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
+                            <p>${calculatedROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
                         </div>
                     </div>
                 `;
@@ -1066,15 +1100,15 @@
                     <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
                             <p>Monthly Cash Flow</p>
-                            <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>$${monthlyCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
                             <p>Analyzed Cash Flow</p>
-                            <p>$${scenario1Profit.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>$${analyzedCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
                             <p>ROI</p>
-                            <p>${scenario1ROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
+                            <p>${calculatedROI.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%</p>
                         </div>
                     </div>
                 `;
