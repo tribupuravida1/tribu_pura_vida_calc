@@ -264,21 +264,7 @@
                             </div>
                         </div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">                       
-                            <div class="">
-                                <label id="label-pest-control" class="block text-gray-700 mb-1 text-sm" for="pest-control">Pest Control
-                                    <span class="relative inline-block cursor-help group">
-                                        <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                        <span id="tooltip-pest-control" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                            Estimated pest control costs for the property.
-                                        </span>
-                                        </span>
-                                </label>
-                                <div class="relative">
-                                    <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
-                                    <input type="text" id="pest-control" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
-                                </div>
-                            </div>
+                        <div class="gap-4 mb-4">                       
                             <div class="">
                                 <label id="label-water-sewer" class="block text-gray-700 mb-1 text-sm" for="water-sewer">Water & Sewer
                                     <span class="relative inline-block cursor-help group">
@@ -300,6 +286,22 @@
                  <!-- ================= Additional Monthly Costs ================= -->
                 <div class="bg-gray-50 p-6 rounded-lg shadow-md mb-6">
                     <h2 id="label-additional-monthly-costs" class="text-base font-semibold mb-4"> Additional Monthly Costs </h2>
+                    <div class="gap-4 mb-4">   
+                        <div class="">
+                            <label id="label-pest-control" class="block text-gray-700 mb-1 text-sm" for="pest-control">Pest Control
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-pest-control" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Estimated pest control costs for the property.
+                                    </span>
+                                    </span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                <input type="text" id="pest-control" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 200" required>
+                            </div>
+                        </div>
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label id="label-vacancy-rate" class="block text-gray-700 mb-1 text-sm" for="vacancy-rate">Vacancy Rate
@@ -927,6 +929,12 @@
                 const maintenanceReservesAmount = monthlyMaintenanceReserves * totalVacancyAndCapex;
                 const managementFeeAmount = managementFee * totalMonthlyRentRoll;
 
+                const totalAdditionalMonthlyCosts = vacancyRateAmount + capexAmount + maintenanceReservesAmount + managementFeeAmount;
+                const totalMonthlyCostWithAdditional = totalMonthlyCost + totalAdditionalMonthlyCosts;
+                const monthlyCashFlowBeforeMortgage = totalMonthlyRentRoll - totalMonthlyCostWithAdditional;
+                const annualCashFlowBeforeMortgage = monthlyCashFlowBeforeMortgage * 12;
+                const calculatedROI = (annualCashFlowBeforeMortgage / total_cash_needed_v3) * 100;
+
                 // Calculate Effective Gross Income (EGI) - Annual
                 const effectiveGrossIncome = totalAnnualRentRoll - (vacancyRateAmount * 12) - (capexAmount * 12);
                 
@@ -946,14 +954,14 @@
                 const totalCashInvested = downPayment + purchaseClosingCost + showRenovationCost;
                 
                 // Calculate ROI = Net Income After Mortgage / Total Cash Invested
-                const calculatedROI = (netIncomeAfterMortgage / totalCashInvested) * 100;
+                // const calculatedROI = (netIncomeAfterMortgage / totalCashInvested) * 100;
                 
                 // Calculate Monthly Cash Flow
                 const totalMonthlyCostWithMortgage = monthlyMortgagePayment + propertyTaxes + insurance + totalMonthlyUtilities + vacancyRateAmount + capexAmount + maintenanceReservesAmount + managementFeeAmount;
                 const monthlyCashFlow = totalMonthlyRentRoll - totalMonthlyCostWithMortgage;
                 
                 // Analyzed Cash Flow (same as Net Income After Mortgage but monthly)
-                const analyzedCashFlow = netIncomeAfterMortgage / 12;
+                // const annualizedCashFlow = netIncomeAfterMortgage / 12;
 
 
             if (language === 'es') {
@@ -970,6 +978,7 @@
                     <p>Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen del costo mensual de la propiedad</strong></h2>
+                    <p>Costo total mensual de la propiedad: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
@@ -978,7 +987,7 @@
                         <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span><br>
 
-                    <h2><strong>Resumen de costos mensuales adicionales</strong></h2>
+                    <p>Costo mensual adicional: $${totalAdditionalMonthlyCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -1019,11 +1028,11 @@
                     <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
                             <p>Flujo de Caja Mensual</p>
-                            <p>$${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>$${monthlyCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
-                            <p>Flujo de Caja Analizado</p>
-                            <p>$${analyzedCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>Flujo de Caja Anualizado</p>
+                            <p>$${annualCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
                             <p>ROI</p>
@@ -1049,6 +1058,7 @@
                     <p>Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Monthly Cost of the Property Summary</strong></h2>
+                    <p>Total Monthly Cost of the Property: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                             <span style="font-size: 0.85em;">
@@ -1057,8 +1067,8 @@
                                <div style="margin-left: 100px;"> * Monthly Utilities ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
                                <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             </span><br>
-                                        
-                    <h2><strong>Additional Monthly Cost Summary</strong></h2>
+
+                    <p>Additional Monthly Cost: $${totalAdditionalMonthlyCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Vacancy Rate Amount: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>CapEx Amount: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Maintenance Reserves Amount: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
@@ -1100,11 +1110,11 @@
                     <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
                             <p>Monthly Cash Flow</p>
-                            <p>$${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>$${monthlyCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
-                            <p>Analyzed Cash Flow</p>
-                            <p>$${analyzedCashFlow.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                            <p>Annualized Cash Flow</p>
+                            <p>$${annualCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
                             <p>ROI</p>
