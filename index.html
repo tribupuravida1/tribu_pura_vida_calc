@@ -171,6 +171,34 @@
                             </div>
                         </div>
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
+                        <div>
+                            <label id="label-private-mortgage-insurance" class="block text-gray-700 mb-1 text-sm" for="private-mortgage-insurance">Private Mortgage Insurance
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-private-mortgage-insurance" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Required mortgage insurance for specific loans with less than a 20% down payment.
+                                    </span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                <input type="text" id="private-mortgage-insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
+                            </div>
+                        </div>                      
+                        <div>
+                            <label id="label-eviction-costs" class="block text-gray-700 mb-1 text-sm" for="eviction-costs">Eviction Costs
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-eviction-costs" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Costs associated with the removal of a tenant.
+                                    </span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                <input type="text" id="eviction-costs" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
+                            </div>
+                        </div>
+                        </div>
                         <div>
                             <div>
                                 <label id="label-rent-roll-units" class="block text-gray-700 mb-1 text-sm" for="rent-roll-units">
@@ -459,6 +487,8 @@
                     "label-unit-6": "Unit 6",
                     "label-additional-monthly-costs": "Additional Monthly Costs",
                     "label-term-loan": "Term Loan (Months)",
+                    "label-private-mortgage-insurance": "Private Mortgage Insurance",
+                    "label-eviction-costs": "Eviction Costs",
 
 
                     // Tooltip translations
@@ -485,6 +515,8 @@
                     "tooltip-management-fee": "The percentage of the total rent paid to management company if using a management company.",
                     "tooltip-rent-roll-units": "Amount of rent per unit that the property is receiving.",
                     "tooltip-term-loan": "Term of the loan in number of months e.g. A 30-Year loan = 360 term",
+                    "tooltip-private-mortgage-insurance": "Required mortgage insurance for specific loans with less than a 20% down payment.",
+                    "tooltip-eviction-costs": "Costs associated with the removal of a tenant.",
 
                     
                 },
@@ -525,6 +557,8 @@
                     "label-unit-6": "Unidad 6",
                     "label-additional-monthly-costs": "Costos Mensuales Adicionales",
                     "label-term-loan": "Préstamo a plazo (meses)",
+                    "label-private-mortgage-insurance": "Seguro Hipotecario Privado",
+                    "label-eviction-costs": "Costos de Desalojo",
 
                     // Tooltip translations
                     "tooltip-home-price": "Cuánto estás ofreciendo para comprar la casa.",
@@ -550,6 +584,8 @@
                     "tooltip-management-fee": "El porcentaje del alquiler total pagado a la empresa administradora si se utiliza una empresa administradora.",
                     "tooltip-rent-roll-units": "Cantidad de alquiler por unidad que la propiedad está recibiendo.",
                     "tooltip-term-loan": "Plazo del préstamo en número de meses, p. ej. Un préstamo a 30 años = plazo de 360.",
+                    "tooltip-private-mortgage-insurance": "Seguro hipotecario requerido para préstamos específicos con menos del 20% de pago inicial.",
+                    "tooltip-eviction-costs": "Costos asociados a la remoción de un inquilino.",
 
                 }
             };
@@ -660,6 +696,8 @@
                     "maintenance-reserves": "E.g., 5",
                     "management-fee": "E.g., 5",
                     "term-loan": "E.g., 360",
+                    "private-mortgage-insurance": "E.g., 3000",
+                    "eviction-costs": "E.g., 3000",
 
                 },
                 es: {
@@ -691,6 +729,8 @@
                     "maintenance-reserves": "Ej., 5",
                     "management-fee": "Ej., 5",
                     "term-loan": "Ej., 360",
+                    "private-mortgage-insurance": "Ej., 3000",
+                    "eviction-costs": "Ej., 3000",
                     
                 }
             };
@@ -719,7 +759,7 @@
                 'purchase-closing-cost', 'property-taxes', 'insurance',
                 'vacancy-rate', 'capex', 'monthly-maintenance-reserves', 'management-fee',
                 'water-sewer', 'garbage', 'gas', 'water', 'electricity', 'pest-control', 'unitSelect',
-                'term-loan'
+                'term-loan', 'private-mortgage-insurance', 'eviction-costs',
             ];
 
             for (let fieldId of requiredFields) {
@@ -775,6 +815,8 @@
             const monthlyMaintenanceReserves = getNumericValue('monthly-maintenance-reserves') / 100;
             const managementFee = getNumericValue('management-fee') / 100;
             const unitSelectValue = getNumericValue('unitSelect');
+            const privateMortgageInsurance = getNumericValue('private-mortgage-insurance');
+            const evictionCosts = getNumericValue('eviction-costs');
             // utilities
             const waterSewer = getNumericValue('water-sewer');
             const garbage = getNumericValue('garbage');
@@ -980,6 +1022,8 @@
                     <h2><strong>Resumen del costo mensual de la propiedad</strong></h2>
                     <p>Costo total mensual de la propiedad: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Seguro hipotecario privado: $${privateMortgageInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
@@ -1007,6 +1051,7 @@
                         <div style="margin-left: 100px;">* Costo Total del Proyecto: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo de Renovación: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                        <div style="margin-left: 100px;">* Costos de Desalojo: $${evictionCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span>
 
                     <br>
@@ -1060,6 +1105,7 @@
                     <h2><strong>Monthly Cost of the Property Summary</strong></h2>
                     <p>Total Monthly Cost of the Property: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Private Mortgage Insurance: $${privateMortgageInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                             <span style="font-size: 0.85em;">
                                <div style="margin-left: 100px;"> * Monthly Property Tax Payment ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
@@ -1089,6 +1135,7 @@
                             <div style="margin-left: 100px;">* Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Renovation Cost: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                            <div style="margin-left: 100px;">* Eviction Cost: $${evictionCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         </span>  
                     <br>
                     <h2><strong>Rent Roll Summary</strong></h2>
