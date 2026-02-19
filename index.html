@@ -129,6 +129,21 @@
                                 <input type="text" id="renovation-cost" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 50000" required>
                             </div>
                         </div> 
+                        <div>
+                            <label id="label-eviction-costs" class="block text-gray-700 mb-1 text-sm" for="eviction-costs">Eviction Costs
+                                <span class="relative inline-block cursor-help group">
+                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
+                                    <span id="tooltip-eviction-costs" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
+                                        Costs associated with the removal of a tenant.
+                                    </span>
+                            </label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
+                                <input type="text" id="eviction-costs" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
+                            </div>
+                        </div>   
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
                         <div class="pt-1">
                             <label class="block text-gray-700 mb-1 text-[11.5px]" id="label-purchase-closing-cost" for="purchase-closing-cost">Purchase Closing Cost Percentage
                                 <span class="relative inline-block cursor-help group">
@@ -141,9 +156,7 @@
                                 <input type="text" id="purchase-closing-cost" class="w-full outline-none" placeholder="E.g., 3" step="0.01" required>
                                 <span class="ml-2 text-gray-700">%</span>
                             </div>
-                        </div>   
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
                         <div>
                             <label id="label-property-taxes" class="block text-gray-700 mb-1 text-sm" for="property-taxes">Yearly Property Taxes
                                 <span class="relative inline-block cursor-help group">
@@ -157,6 +170,8 @@
                                 <input type="text" id="property-taxes" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
                             </div>
                         </div>                      
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
                         <div>
                             <label id="label-insurance" class="block text-gray-700 mb-1 text-sm" for="insurance">Yearly Insurance
                                 <span class="relative inline-block cursor-help group">
@@ -170,8 +185,6 @@
                                 <input type="text" id="insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 1200" required>
                             </div>
                         </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4"> 
                         <div>
                             <label id="label-private-mortgage-insurance" class="block text-gray-700 mb-1 text-sm" for="private-mortgage-insurance">Private Mortgage Insurance
                                 <span class="relative inline-block cursor-help group">
@@ -185,19 +198,7 @@
                                 <input type="text" id="private-mortgage-insurance" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
                             </div>
                         </div>                      
-                        <div>
-                            <label id="label-eviction-costs" class="block text-gray-700 mb-1 text-sm" for="eviction-costs">Eviction Costs
-                                <span class="relative inline-block cursor-help group">
-                                    <span class="text-blue-600 cursor-pointer">ℹ️</span>
-                                    <span id="tooltip-eviction-costs" class="tooltip absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-48 p-2 bg-gray-800 text-white text-xs rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                        Costs associated with the removal of a tenant.
-                                    </span>
-                            </label>
-                            <div class="relative">
-                                <span class="absolute inset-y-0 left-2 flex items-center text-gray-500">$</span>
-                                <input type="text" id="eviction-costs" class="w-full p-2 pl-8 border border-gray-300 rounded" placeholder="E.g., 3000" required>
-                            </div>
-                        </div>
+
                         </div>
                         <div>
                             <div>
