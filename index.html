@@ -1059,7 +1059,7 @@
                         <div style="margin-left: 100px;">* Costo Total del Proyecto: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
 
-                        ${!loanIncludesRenovation ? `<div style="margin-left: 100px;">* Costo de Renovación: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>` : ''}
+                        ${loanIncludesRenovation_v2.value === "no" ? `<div style="margin-left: 100px;">* Costo de Renovación: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>` : ''}
                         <div style="margin-left: 100px;">* Costos de Desalojo: $${evictionCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span>
 
@@ -1147,7 +1147,7 @@
                             <div style="margin-left: 100px;">* Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             <div style="margin-left: 100px;">* Total Purchasing Closing Cost: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
 
-                            ${!loanIncludesRenovation ? `<div style="margin-left: 100px;">* Renovation Cost: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>` : ''}
+                            ${loanIncludesRenovation_v2.value === "no" ? `<div style="margin-left: 100px;">* Renovation Cost: $${renovationCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>` : ''}
                             <div style="margin-left: 100px;">* Eviction Cost: $${evictionCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         </span>  
                     <br>
