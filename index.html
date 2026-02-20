@@ -873,6 +873,11 @@
 
             const totalMonthlyCost = monthlyInterest_v2 + propertyTaxes + insurance + totalMonthlyUtilities;
 
+            const monthlyPropertyTax = showPropertyTaxes / 12;
+            const monthlyInsurance = showInsurance / 12;
+
+            const totalMonthlyHoldingCost = monthlyPropertyTax + monthlyInsurance + totalMonthlyUtilities + monthlyMortgagePayment + privateMortgageInsurance;
+
             const totalHoldingCost = totalMonthlyCost * holdingPeriod;
 
             const purchaseClosingCost = loanIncludesRenovation ? (loanAmount * purchaseClosingCostPercentage) : (homePrice * purchaseClosingCostPercentage);
@@ -1018,19 +1023,19 @@
                     <p>Pago Inicial: $${downPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Monto Total del Préstamo: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Plazo del Préstamo: ${termLoan} meses</p>
-                    <p>Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Pago mensual de intereses y capital del préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen del costo mensual de la propiedad</strong></h2>
                     <p>Costo total mensual de la propiedad: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <br>
 
-                    <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Costo Mensual Total de Mantenimiento: $${totalMonthlyHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                     <span style="font-size: 0.85em;">
                         <div style="margin-left: 100px;">* Pago Mensual de Impuestos sobre la Propiedad ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Pago Mensual de Seguro ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                         <div style="margin-left: 100px;">* Servicios Públicos Mensuales ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div>
-                        <div style="margin-left: 100px;">* Pago Mensual de Intereses del Préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                        <div style="margin-left: 100px;">* Pago mensual de intereses y capital del préstamo: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Seguro Hipotecario Privado: $${privateMortgageInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                     </span><br>
 
@@ -1103,18 +1108,18 @@
                     <p>Down Payment: $${downPayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Total Loan Amount: $${total_loan_amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <p>Loan Term: ${termLoan} months</p>
-                    <p>Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Monthly Interest and Principal Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Monthly Cost of the Property Summary</strong></h2>
                     <p>Total Monthly Cost of the Property: $${totalMonthlyCostWithAdditional.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     <br>
-                    <p>Total Monthly Holding Cost: $${totalMonthlyCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                    <p>Total Monthly Holding Cost: $${totalMonthlyHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
 
                             <span style="font-size: 0.85em;">
                                <div style="margin-left: 100px;"> * Monthly Property Tax Payment ($${showPropertyTaxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Insurance Payment ($${showInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} ÷ 12)<br></div>
                                <div style="margin-left: 100px;"> * Monthly Utilities ($${totalMonthlyUtilities.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })})<br></div> 
-                               <div style="margin-left: 100px;"> * Monthly Interest Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                               <div style="margin-left: 100px;"> * Monthly Interest and Principal Loan Payment: $${monthlyMortgagePayment.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                                <div style="margin-left: 100px;"> * Private Mortgage Insurance: $${privateMortgageInsurance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                             </span><br>
 
