@@ -979,7 +979,7 @@
 
                 const totalAdditionalMonthlyCosts = vacancyRateAmount + capexAmount + maintenanceReservesAmount + managementFeeAmount;
                 const totalMonthlyCostWithAdditional = totalMonthlyCost + totalAdditionalMonthlyCosts + privateMortgageInsurance;
-                const monthlyCashFlowBeforeMortgage = totalMonthlyRentRoll - totalMonthlyCostWithAdditional;
+                const monthlyCashFlowBeforeMortgage = totalMonthlyRentRoll - totalMonthlyHoldingCost - totalAdditionalMonthlyCosts;
                 const annualCashFlowBeforeMortgage = monthlyCashFlowBeforeMortgage * 12;
                 const calculatedROI = (annualCashFlowBeforeMortgage / total_cash_needed_v3) * 100;
 
