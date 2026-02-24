@@ -879,6 +879,7 @@
             const totalMonthlyHoldingCost = monthlyPropertyTax + monthlyInsurance + totalMonthlyUtilities + monthlyMortgagePayment + privateMortgageInsurance;
 
             const totalHoldingCost = totalMonthlyCost * holdingPeriod;
+            const totalHoldingCost_v2 = totalMonthlyHoldingCost * holdingPeriod;
 
             const purchaseClosingCost = loanIncludesRenovation ? (loanAmount * purchaseClosingCostPercentage) : (homePrice * purchaseClosingCostPercentage);
 
@@ -978,7 +979,8 @@
                 const managementFeeAmount = managementFee * totalMonthlyRentRoll;
 
                 const totalAdditionalMonthlyCosts = vacancyRateAmount + capexAmount + maintenanceReservesAmount + managementFeeAmount;
-                const totalMonthlyCostWithAdditional = totalMonthlyCost + totalAdditionalMonthlyCosts + privateMortgageInsurance;
+                const totalMonthlyCostWithAdditional = totalMonthlyHoldingCost + totalAdditionalMonthlyCosts;
+                // const totalMonthlyCostWithAdditional = totalMonthlyCost + totalAdditionalMonthlyCosts + privateMortgageInsurance;
                 const monthlyCashFlowBeforeMortgage = totalMonthlyRentRoll - totalMonthlyHoldingCost - totalAdditionalMonthlyCosts;
                 const annualCashFlowBeforeMortgage = monthlyCashFlowBeforeMortgage * 12;
                 const calculatedROI = (annualCashFlowBeforeMortgage / total_cash_needed_v3) * 100;
@@ -1047,7 +1049,7 @@
                     <br>
 
                     <h2><strong>Resumen de Costos de Mantenimiento</strong></h2>
-                    <p>Costo Total de Mantenimiento: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Costo Total de Mantenimiento: $${totalHoldingCost_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
                     <h2><strong>Resumen de Costos de Cierre</strong></h2>
                     <p>Costo Total de Cierre de Compra: $${purchaseClosingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
@@ -1134,7 +1136,7 @@
                   
                     <br>
                     <h2><strong>Pre-rent Holding Cost Summary</strong></h2>
-                    <p>Total Project Holding Cost: $${totalHoldingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
+                    <p>Total Project Holding Cost: $${totalHoldingCost_v2.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p><br>
 
 
                      <h2><strong>Closing Cost Summary</strong></h2>
