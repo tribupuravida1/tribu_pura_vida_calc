@@ -543,7 +543,7 @@
                     "label-water": "Agua",
                     "label-electricity": "Electricidad",
                     "label-pest-control": "Control de Plagas",
-                    "label-vacancy-rate": "Tasa de Vacantes",
+                    "label-vacancy-rate": "Tasa de Vacancia",
                     "label-capex": "CapEx",
                     "label-monthly-maintenance-reserves": "Reservas Mensuales de Mantenimiento",
                     "label-management-fee": "Honorarios de Gestión",
@@ -581,7 +581,7 @@
                     "tooltip-pest-control": "Costos estimados de control de plagas para la propiedad.",
                     "tooltip-vacancy-rate": "Porcentaje del ingreso total de la propiedad que se aparta para el potencial de unidades que estarán vacías y no generando ingresos durante el año, esta reserva cubre los gastos durante el tiempo que la unidad está vacante.",
                     "tooltip-capex": "Porcentaje del ingreso total de la propiedad que se aparta para gastos grandes y poco frecuentes destinados a mejorar o extender la vida útil de una propiedad. Ejemplos: techo nuevo, sistema de calefacción nuevo, remodelaciones mayores.",
-                    "tooltip-monthly-maintenance-reserves": "El porcentaje del ingreso total por alquiler que ingresa a la propiedad que se deposita en garantía para cubrir el mantenimiento.",
+                    "tooltip-monthly-maintenance-reserves": "El porcentaje del ingreso total del alquiler que se deposita como reserva para cubrir los gastos del mantenimiento.",
                     "tooltip-management-fee": "El porcentaje del alquiler total pagado a la empresa administradora si se utiliza una empresa administradora.",
                     "tooltip-rent-roll-units": "Cantidad de alquiler por unidad que la propiedad está recibiendo.",
                     "tooltip-term-loan": "Plazo del préstamo en número de meses, p. ej. Un préstamo a 30 años = plazo de 360.",
@@ -1042,7 +1042,7 @@
                     </span><br>
 
                     <p>Costo mensual adicional: $${totalAdditionalMonthlyCosts.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                        <div style="margin-left: 100px;">* Monto de la tasa de vacantes: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
+                        <div style="margin-left: 100px;">* Monto de la tasa de vacancia: $${vacancyRateAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Monto de CapEx: $${capexAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Monto de reservas de mantenimiento: $${maintenanceReservesAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
                         <div style="margin-left: 100px;">* Monto de la tarifa de gestión: $${managementFeeAmount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}<br></div>
@@ -1078,16 +1078,16 @@
                 document.getElementById('scenarios').style.display = 'block';
 
                 document.getElementById('scenarios').innerHTML = `
-                    <h3 class="text-2xl font-bold mb-4">Resultados de Flujo de Caja y Retorno de Inversión</h3>
+                    <h3 class="text-2xl font-bold mb-4">Resultados de Flujo de Efectivo Neto y Retorno de Inversión</h3>
 
                     <!-- Escenario 1 -->
                     <div class="flex justify-center items-center gap-8 mb-8 flex-wrap">
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-indigo-100 text-indigo-700 font-bold rounded-full shadow-md text-center">
-                            <p>Flujo de Caja Mensual</p>
+                            <p>Flujo de Efectivo Neto Mensual</p>
                             <p>$${monthlyCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-blue-100 text-blue-700 font-bold rounded-full shadow-md text-center">
-                            <p>Flujo de Caja Anualizado</p>
+                            <p>Flujo de Efectivo Neto Anualizado</p>
                             <p>$${annualCashFlowBeforeMortgage.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                         </div>
                         <div class="flex flex-col items-center justify-center w-48 h-48 bg-green-100 text-green-700 font-bold rounded-full shadow-md text-center">
